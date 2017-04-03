@@ -26,14 +26,16 @@ class WorkController extends Controller
 		
 		// dd($works);
 		return view('work_manage')
-			->with('works',$works)
-			->with('filter',isset($input["type"])?$input["type"]:"");
+              ->with('pagename','work')
+							->with('works',$works)
+							->with('filter',isset($input["type"])?$input["type"]:"");
 	}
 
 	function create(){
 		$singers = Singer::all();
 		return view('work_new')
-			->with("singers",$singers );
+              ->with('pagename','work')
+							->with("singers",$singers );
 	}
 
 	function store(){
@@ -51,8 +53,9 @@ class WorkController extends Controller
 		// $input = Input::all();
 		$work = Work::find($id);
 		return view('work_new')
-				->with('work',$work)
-				->with("singers",$singers );
+            ->with('pagename','work')
+						->with('work',$work)
+						->with("singers",$singers );
 	}
 
 	function update($id){

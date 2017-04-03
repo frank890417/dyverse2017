@@ -38,11 +38,13 @@ class SingerController extends Controller
         
         
         return view('singer_manage')
+              ->with('pagename','singer')
                 ->with('singers',$singers);
     }
 
     function create(){
-        return view('singer_new');
+        return view('singer_new')
+              ->with('pagename','singer');
     }
 
     function store(){
@@ -56,6 +58,7 @@ class SingerController extends Controller
         // $input = Input::all();
         $singer = Singer::find($id);
         return view('singer_new')
+              ->with('pagename','singer')
                 ->with('singer',$singer);
     }
 

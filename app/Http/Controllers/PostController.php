@@ -15,7 +15,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->get();
+
         return view('post_manage')
+              ->with('pagename','post')
               ->with('posts',$posts);
     }
 
@@ -25,6 +27,7 @@ class PostController extends Controller
       $post= Post::find($id);
 
       return view('posts_show')
+            ->with('pagename','post')
             ->with('title','文章編輯 - '.$post->title)
             ->with('post',$post);
     }
@@ -33,6 +36,7 @@ class PostController extends Controller
     public function create()
     {
       return view('post_new')
+            ->with('pagename','post')
           ->with('title','新增文章');
     }
 
@@ -52,6 +56,8 @@ class PostController extends Controller
     {
       $post=Post::find($id);
       return view('post_new')
+
+            ->with('pagename','post')
             ->with('title','編輯-'.$post->title)
             ->with('post',$post);
     }

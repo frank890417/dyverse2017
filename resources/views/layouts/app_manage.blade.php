@@ -30,7 +30,7 @@
             <li class="dropdown pull-right"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
                 <svg class="glyph stroked male-user">
                   <use xlink:href="#stroked-male-user"></use>
-                </svg> {{ Auth::user()->name }}  <span class="caret"></span></a>
+                </svg>   <span class="caret"></span></a>
               <ul role="menu" class="dropdown-menu">
                 <li><a href="#">
                     <svg class="glyph stroked male-user">
