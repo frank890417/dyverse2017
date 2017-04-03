@@ -40,21 +40,21 @@ class ApiController extends Controller
     
     public function get_singer($id){
         $singer=Singer::find($id);
-        $works=Work::where("singerid","=",$id)->get();
+        $works=Work::where("singerid","=",$id)->orderBy('date','desc')->get();
         $singer['works']=$works;
         
         return $singer;
     }
 
     public function get_all_works(){
-        $works=Work::all();
+        $works=Work::orderBy('date','desc')->get();
         return $works;
     }
 
     public function get_all_singers(){
         $singers=Singer::all();
         foreach ($singers as $singer){
-            $singer['works']=Work::where("singerid","=",$singer->id)->get();
+            $singer['works']=Work::where("singerid","=",$singer->id)->orderBy('date','desc')->get();
         }
         return $singers;
     }
