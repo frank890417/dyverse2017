@@ -1,7 +1,7 @@
 @extends('layouts.app_manage')
 
 @section('content')
-<div class="container">
+
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
@@ -110,7 +110,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @endsection
 @section('require_js')
