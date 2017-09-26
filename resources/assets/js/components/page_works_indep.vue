@@ -25,16 +25,21 @@
           <div class='infopart col-sm-4 col-md-12'>
             <br class='visible-xs'>
             <h3>系列曲目</h3>
-            <h4 v-if='!tracks && work.work_url.indexOf("youtube")==-1'><img src='img/loadingicon.png' class=loadingspin>載入曲目中...</h4>
-            <div v-for='t in tracks' v-if='tracks && work.work_url.indexOf("youtube")==-1'>
-              <h6>{{t.title}}</h6>
-              <audio class='work_indep_player' controls='controls' id='now_playing'>
-                <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
-              </audio>
+            <div v-if="work.work_url.indexOf('youtube')==-1">
+              <h4 v-if='(!tracks.length)'>
+                <img src='/img/loadingicon.png' class="loadingspin">載入曲目中...
+              </h4>
+              <div v-for='t in tracks' v-if='tracks'>
+                <h6>{{t.title}}</h6>
+                <audio class='work_indep_player' controls='controls' id='now_playing'>
+                  <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
+                </audio>
+              </div>
             </div>
-            <div v-if='work.work_url.indexOf("youtube")!=-1'>
+            <div v-else>
               <iframe :src='work.embed_url' width='100%' height='350px'></iframe>
             </div>
+            
           </div></div>
 
         </div>
