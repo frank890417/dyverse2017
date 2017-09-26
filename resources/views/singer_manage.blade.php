@@ -45,7 +45,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <a href="{{ url('singer/create') }}" class="btn btn-primary">新增創作者</a>
+                    <a href="{{ url('/manage/singer/create') }}" class="btn btn-primary">新增創作者</a>
                 </div>
             </div>
         </div>

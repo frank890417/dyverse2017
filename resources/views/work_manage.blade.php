@@ -5,7 +5,6 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">作品管理 {{ $filter }}</div>
-
             <div class="panel-body">
                 <table class='table table-hover' id=posttable>
                     <thead>
