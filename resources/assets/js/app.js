@@ -16,6 +16,7 @@ require('./bootstrap');
 import store from "./store"
 import router from "./router"
 import {mapState} from 'vuex'
+import "./sdk-3.1.2.js"
 
 var website_data = {};
 var api_url = "http://dyverse.studio/api/command.php";

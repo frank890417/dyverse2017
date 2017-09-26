@@ -30,7 +30,7 @@
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <!-- <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/2.2.1/vuex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.3.1/vue-router.min.js"></script> -->

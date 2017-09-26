@@ -17,6 +17,7 @@
 import {mapState} from 'vuex'
 import _ from 'lodash'
 import workitem from './workitem/workitem'
+
 export default {
   components: {
     workitem
@@ -48,9 +49,6 @@ export default {
       };
       return _.chunk(JSON.parse(JSON.stringify(works)).sort(sort_date),3) ;
     }
-  },
-  components: {
-    workitem
   }
 }
 </script>

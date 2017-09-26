@@ -50,7 +50,8 @@ export default {
   props: ['wkid'],
   data: function(){
     return {
-      tracks: []
+      tracks: [],
+      client_id: '5dc224d1ef12f77e0c85f88d1b3b579d'
     };
   },
   computed: {
@@ -85,8 +86,8 @@ export default {
           $.ajax({
               url: 'http://api.soundcloud.com/resolve.json',
               data: {
-                  client_id: client_id,
-                  url: this.workset[0].work_url
+                  client_id: vobj.client_id,
+                  url: vobj.workset[0].work_url
               },
               success: function(res) {
                   if (res.tracks){
