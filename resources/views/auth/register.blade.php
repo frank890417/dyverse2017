@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.app_manage')
 @section('content')
 <div class="container">
     <div class="row">
@@ -67,6 +66,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

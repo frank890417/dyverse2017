@@ -64,17 +64,17 @@
               use(xlink:href='#stroked-dashboard-dial')
             |  網站資料
         --}}
-        <li class="{{ isset($pagename)?(($pagename=='work')?'active':''):'' }} " ><a href="{{ url('/work') }}">
+        <li class="{{ isset($pagename)?(($pagename=='work')?'active':''):'' }} " ><a href="{{ url('/manage/work') }}">
             <svg class="glyph stroked calendar">
               <use xlink:href="#stroked-calendar"></use>
             </svg> 作品管理</a></li>
        
-        <li class="{{ isset($pagename)?(($pagename=='singer')?'active':''):'' }}"><a href="{{ url('/singer') }}">
+        <li class="{{ isset($pagename)?(($pagename=='singer')?'active':''):'' }}"><a href="{{ url('/manage/singer') }}">
               <svg class="glyph stroked calendar">
                 <use xlink:href="#stroked-calendar"></use>
               </svg> 演出者管理</a></li>
 
-        <li class="{{ isset($pagename)?(($pagename=='post')?'active':''):'' }}"><a href="{{ url('/post') }}">
+        <li class="{{ isset($pagename)?(($pagename=='post')?'active':''):'' }}"><a href="{{ url('/manage/post') }}">
               <svg class="glyph stroked calendar">
                 <use xlink:href="#stroked-calendar"></use>
               </svg> 文章管理</a></li>

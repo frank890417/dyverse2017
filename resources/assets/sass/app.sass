@@ -7,7 +7,567 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+$color_black: #241807
+$color_yellow: #C9A063
+$color_white: #fefefe
+$color_brown: #241807
+
+*
+  font-family: "Roboto", sans-serif, "Microsoft Jhenghei" !important
+  vertical-align: top
+
+
+@mixin size($w,$h)
+  width: $w
+  height: $h
+
+//vue fading control
+
+.fade-enter-active ,.fade-leave-active 
+  transition: opacity 0.5s, max-height 0.5s
+
+.fade-enter, .fade-leave-active 
+  opacity: 0
+  
+
+.text-muted
+  color: $color_black
+
+//general
+
+html, body
+  margin: 0
+  padding: 0
+  left: 0
+  top: 0
+  +size(100%,100%)
+  background-color: $color_white
+  color: $color_brown
+  font-size: 15px
+  border: solid 6px $color_yellow
+  overflow: hidden
+  box-sizing: border-box
+
+body
+  overflow-y: hidden
+  position: relative
+  margin: 0px auto
+
+a
+  color: $color_yellow
+
+  // @media screen and (min-width: 1024px)
+  //   border-left: solid 60px $color_yellow
+  //   border-right: solid 60px $color_yellow
+
+
+
+section
+  padding: 20px 0px
+
+input.form-control, textarea.form-control
+  background-color: transparent
+  color: $color_white
+
+nav.navbar
+  // position: fixed
+  top: 0px
+  left: 0px
+  width: 100%
+  z-index: 500
+  vertical-align: middle
+  background-color: white
+  color: $color_yellow
+  border: solid 1px $color_yellow
+  border-top: none
+  border-left: none
+  border-right: none
+  box-shadow: none
+
+  &.navtop
+    background-color: transparent
+
+  a:hover
+    color: $color_black
+
+  .icon-bar
+    background-color: $color_yellow
+
+  &.at_index
+    background-color: transparent
+    
+    .navbar-header
+      a
+        color: transparent
+      .navbar-brand a
+        color: transparent 
+    .nav.navbar-nav a
+      color: $color_white
+    li
+      a
+        transition-duration: 0.5s
+        color: $color_black
+
+      &.active
+        a, a:focus
+          color: $color_white
+        
+
+h1, h2, h3, h4, h5, h6
+  font-weight: bold
+
+h1
+  font-size: 1.5em
+  letter-spacing: 1px
+
+h2
+  font-size: 1.4em
+
+h3
+  font-size: 1.2em
+
+h4
+  font-size: 1em
+
+h5
+  font-size: 0.7em
+  line-height: 1.5em
+
+h6
+  font-size: 0.5em
+
+.page
+  // border-left: solid 10px $color_yellow
+  // border-right: solid 10px $color_yellow
+  box-sizing: border-box
+  min-height: 100vh
+  margin: 0
+  position: absolute
+  left: 0px
+  top: 50px
+  right: 0px
+  bottom: 0px
+  overflow: auto
+  padding-top: 20px
+  padding-bottom: 20px
+
+
+  @keyframes title_flow
+    0%
+      transform: translate(3px, 3px)
+
+    100%
+      transform: translate(0px, 0px)
+
+  h1
+    background-color: $color_yellow
+    color: white
+    padding: 6px 30px
+    display: inline-block
+    font-weight: normal
+    position: relative
+    margin-left: 10px
+
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      width: 100%
+      height: 100%
+      left: -6px
+      top: -6px
+      border: solid 1px $color_yellow
+      transform: translate(3px, 3px)
+      animation: title_flow 1s both
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity 0.5s
+
+.fade-enter, .fade-leave-active
+  opacity: 0
+
+section.page_index
+  padding-top: 50px
+  margin-top: -50px
+  
+  .cover
+    width: 100%
+  .index_mainimg
+    background-color: #C59D5E
+    text-align: center
+    padding-top: 50px
+    margin-top: -50px
+    overflow: hidden
+    img
+      height: 70vh
+      width: auto
+      display: block
+      animation: rot_in 1s forward cubic-bezier(.43,.05,.84,1.17)
+      margin-left: auto
+      margin-right: auto
+  @keyframes rot_in
+    0%
+      opacity: 0
+      transform: rotate(10deg)
+    100%
+      opacity: 1
+      transform: rotate(0deg)
+
+
+.page_service
+  img
+    width: 120px
+    background-color: $color_yellow
+
+  // background-color: $color_white
+
+.pages_area
+  // height: 100%
+  min-height: calc( 100vh - 51px)
+  max-height: calc( 100vh - 51px)
+
+  // padding-top: 20px
+  // padding-bottom: 50px
+  overflow-y: scroll
+
+.navbar
+  border-radius: 0px
+  margin: 0
+  transition: 0.5s
+  *
+    transition: 0.5s
+
+  .navbar-header
+    a
+      color: $color_yellow
+
+  li
+    a
+      transition-duration: 0.5s
+      color: $color_black
+
+    &.active
+      a, a:focus
+        color: $color_yellow
+
+  
+.breadcrumb
+  background-color: transparent
+  color: $color_white
+
+  a
+    color: $color_yellow
+
+.jumbotron
+  margin-top: 50px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  // background-image: url(https://www.taylorscoffee.co.uk/wp-content/uploads/2014/11/sound-wave.png)
+  // background-size: 100% 70%
+  // background-repeat: no-repeat
+  // background-position: center center
+  // filter: saturate(10%) brightness(0.5)
+  // background-blend-mode: screen
+  background-color: $color_black
+  padding: 0
+
+  img
+    width: 100%
+
+  .logo
+    height: 150px
+
+.stage
+  color: $color_yellow
+  font-weight: 900
+
+//servicebox
+.row_service
+  padding-bottom: 30px
+
+  .servicebox
+    padding: 20px
+
+    h3
+      margin-bottom: 20px
+
+.row_service_stage
+  text-align: center
+
+
+//work
+.workitem
+  // padding: 20px 30px
+  
+  p
+    line-height: 25px
+    font-size: 14px
+
+  a.inner
+    cursor: pointer
+    display: block
+    color: $color_yellow
+    position: relative
+    margin: 10px
+
+    hr
+      border-bottom: solid 1px $color_yellow
+      margin: 0
+      margin-top: 10px
+
+    @keyframes gold
+      0%
+        opacity: 0
+
+      80%
+        opacity: 1
+
+      90%
+        opacity: 0.5
+
+      100%
+        opacity: 0.8
+
+    &:before
+      content: ""
+      display: block
+      position: absolute
+      width: 10px
+      height: 10px
+      background-color: $color_yellow
+      left: -2px
+      top: -2px
+      transition: 0.5s
+      transform: rotate(45deg)
+
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      +size(100%,100%)
+      left: 0
+      top: 0
+      opacity: 0.8
+      border: solid 2px $color_yellow
+      animation: gold 1s
+      transition: 0.5s
+
+    // &:hover
+    //   .workitem_img
+    //     filter: brightness(0.7)
+    //     background-size: cover
+    .workitem_img
+      background-size: cover
+      background-position: center center
+      background-repeat: none
+      filter: brightness(1)
+      transition: 0.5s
+      transform: translate(5px, -5px)
+
+      // z-index: -1
+
+    &:hover
+      color: $color_brown
+      text-decoration: none
+
+      &:after
+        transform: translate(-5px, -5px)
+
+      &:before
+        transform: translate(-10px, -10px)
+        width: 15px
+        height: 15px
+        background-color: transparent
+  audio
+    max-width: 100%
+
+  .workitem_texts
+    padding: 20px 20px
+
+    // padding-top: 0px
+    // position: absolute
+    background-color: #fff
+
+    // left: 0
+    // bottom: 20px
+    // box-shadow: 0px 0px 10px rgba(0,0,0,0.5)
+    h3
+      line-height: 25px
+
+    h3, h6
+      margin: 0
+
+  .workitem_img
+    width: 100%
+    padding-bottom: 60%
+    background-color: $color_black
+
+//work indep
+.row_work_indep
+  // margin-top: 50px
+  margin-bottom: 50px
+
+  audio
+    width: 100%
+  a.switch
+    display: inline
+    color: $color_yellow
+  a.company
+    color: $color_yellow
+  .work_work
+    padding: 3px 10px
+    border: solid 1px $color_black
+    border-radius: 10px
+    display: inline-block
+    float: right
+  .infopart
+    min-height: 200px
+  .discription
+    line-height: 25px
+    font-size: 14px
+  .warningline
+    height: 15px
+    background-color: $color_black
+    background: linear-gradient(45deg,$color_yellow 5%,transparent 5%,transparent 45%, $color_yellow 45%,$color_yellow 65%,transparent 65%,transparent 95%, $color_yellow 95%)
+    background-size: 20px 20px
+  a
+    color: $color_black
+
+
+.page_works_indep
+  .container
+    padding: 0px 50px
+
+.work_indep_img
+  min-height: 350px
+  background-color: $color_black
+  background-size: cover
+  background-position: center center
+  border-bottom: solid 10px $color_yellow
+
+  @media screen and (min-width: 768px)
+    height: 100%
+
+
+.blog_indep_img
+  height: 300px
+  background-color: $color_black
+  background-size: cover
+  background-position: center center
+  border-bottom: solid 10px $color_yellow
+  // filter: brightness(0.7)
+
+.nametag
+  padding: 8px 17px
+  background-color: $color_white
+  color: $color_brown
+  position: absolute
+  left: 0px
+  bottom: 15px
+
+.work_content_header
+  &:before
+    content: ""
+    display: block
+    +size(10px,10px)
+    margin-bottom: 15px
+    background-color: $color_yellow
+    border: solid 1px $color_yellow
+    animation: gold_scale 1.2s both
+
+@keyframes gold_scale
+  0%
+  10%
+    transform: scale(0.01) rotate(45deg)
+    background-color: rgba($color_yellow,0)
+  50%
+    background-color: rgba($color_yellow,0.2)
+  100%
+    transform: scale(1) rotate(360deg)
+    background-color: rgba($color_yellow,1)
+
+//artist
+.row_artist
+  padding: 20px 0px
+  border-bottom: solid 1px #ccc
+  
+  .artist_worklist
+    list-style: none
+    padding: 0px
+    li
+      border: solid 1px $color_yellow
+      background-color: rgba($color_yellow,0)
+      color: $color_black
+      padding: 3px 5px
+      cursor: pointer
+      &.active
+        background-color: $color_yellow
+        color: white
+      &:hover
+        background-color: $color_yellow
+        color: white
+
+  .col_artist_info
+    // background-color: $color_yellow
+    // color: $color_white
+    // height: 100%
+
+  .artist_img
+    +size(100%,auto)
+    border-bottom: solid 10px $color_yellow
+
+//footer
+footer
+  margin: 0
+  background-color: $color_yellow
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3)
+  position: relative
+  bottom: -50px
+
+  .row
+    padding-top: 50px
+    padding-bottom: 50px
+
+  h3
+    color: $color_white
+    margin: 0
+
+  .goldtext, .infotext
+    display: inline-block
+    color: $color_white
+
+  .goldtext
+    width: 80px
+    margin-bottom: 5px
+    font-weight: 600
+
+  .infotext
+    color: $color_white
+  a
+    color: $color_white
+//contact
+.page_contact
+  textarea
+    height: 200px
+
+.loadingspin
+  animation: rot 1s infinite linear
+  width: 20px
+  margin-right: 10px
+
+  @keyframes rot
+    0%
+      transform: rotate(0deg)
+
+    100%
+      transform: rotate(360deg)
+
+
+
 
 table
   tr
     transition: 0.5s
+

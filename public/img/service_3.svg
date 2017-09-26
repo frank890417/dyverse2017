@@ -1,0 +1,35 @@
+<svg id="service_3" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.14 93.85">
+   <defs>
+      <style>.s3cls-1,.s3cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;}.s3cls-1{stroke-width:1.5px;}.s3cls-3{fill:#fff;}</style>
+   </defs>
+   <title>網站設計</title>
+   <rect class="s3cls-1" x="11.34" y="12.34" width="62.88" height="8.77"/>
+   <rect class="s3cls-1" x="24" y="27.61" width="62.88" height="8.77"/>
+   <rect class="s3cls-1" x="6.26" y="43.57" width="62.88" height="8.77"/>
+   <rect class="s3cls-1" x="17.55" y="59.07" width="62.88" height="8.77"/>
+   <rect class="s3cls-1" x="17.55" y="74.41" width="62.88" height="8.77"/>
+   <line class="s3cls-2" x1="27.86" y1="9.72" x2="27.86" y2="87.12"/>
+   <line class="s3cls-2" x1="65.99" y1="6.72" x2="65.99" y2="84.12"/>
+   <rect class="s3cls-3" x="27.86" y="27.95" width="21.12" height="8.77"/>
+   <rect class="s3cls-3" x="65.99" y="59.07" width="14.43" height="8.77"/>
+   <rect class="s3cls-3" x="35.84" y="74.41" width="14.95" height="8.77"/>
+   <rect class="s3cls-3" x="39.83" y="43.57" width="5.73" height="8.77"/>
+   <rect class="s3cls-3" x="55.44" y="12.13" width="10.56" height="8.2"/>
+
+   <g class="per1">
+      <polygon class="s3cls-3" points="30.49 12.23 28.23 21.21 29.43 21.21 31.82 12.23 30.49 12.23"/>
+      <polygon class="s3cls-3" points="33.01 12.23 30.75 21.21 31.95 21.21 34.34 12.23 33.01 12.23"/>
+      <polygon class="s3cls-3" points="35.72 12.23 33.46 21.21 34.66 21.21 37.05 12.23 35.72 12.23"/>
+      <polygon class="s3cls-3" points="38.24 12.23 35.99 21.21 37.18 21.21 39.57 12.23 38.24 12.23"/>
+   </g>
+   <g class="per2">
+      <polygon class="s3cls-3" points="56.05 58.97 53.8 67.95 54.99 67.95 57.38 58.97 56.05 58.97"/>
+      <polygon class="s3cls-3" points="58.58 58.97 56.32 67.95 57.52 67.95 59.91 58.97 58.58 58.97"/>
+      <polygon class="s3cls-3" points="61.29 58.97 59.03 67.95 60.22 67.95 62.62 58.97 61.29 58.97"/>
+      <polygon class="s3cls-3" points="63.81 58.97 61.55 67.95 62.75 67.95 65.14 58.97 63.81 58.97"/>
+      <polygon class="s3cls-3" points="45.57 58.97 43.31 67.95 44.51 67.95 46.9 58.97 45.57 58.97"/>
+      <polygon class="s3cls-3" points="48.1 58.97 45.84 67.95 47.03 67.95 49.43 58.97 48.1 58.97"/>
+      <polygon class="s3cls-3" points="50.8 58.97 48.55 67.95 49.74 67.95 52.13 58.97 50.8 58.97"/>
+      <polygon class="s3cls-3" points="53.33 58.97 51.07 67.95 52.27 67.95 54.66 58.97 53.33 58.97"/>
+   </g>
+</svg>

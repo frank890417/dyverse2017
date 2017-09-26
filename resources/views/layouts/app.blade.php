@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,100 +7,53 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- 
+    <title>{{ config('app.name', 'Laravel') }}</title> -->
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Dyverse Studio 歧響音樂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Dyverse Studio">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://dyverse.studio">
+    <meta property="og:image" content="http://dyverse.studio/img/og.png">
+    <meta property="og:description" content="創立於2016年，承襲多元的音樂風格，利用錄音、混音及配樂等媒介，延展音樂的無限可能，使每一個作品，成為獨一無二的聽覺饗宴。">
+    <meta name="keywords" content="Dyverse Studio,音樂工作室,音樂,配樂,廣告配樂,數位製譜,音效,混音,日本,配樂,接案,電影,音效,歧嚮音樂,Dyverse,外包">
+    <meta name="google-site-verification" content="LI2MMqM1b-QnvsS3EK9VGBcNOOI4pQCY-Am1PBYggmc">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/2.2.1/vuex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.3.1/vue-router.min.js"></script> -->
     <!-- Scripts -->
     <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
+      window.Laravel = {!! json_encode([
+      'csrfToken' => csrf_token(),
+      ]) !!};
+      window.csrf_token = "{{ csrf_token() }}";
     </script>
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Dyverse 2017 Backend
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li><a href="{{ url('post') }}">文章管理</a></li>
-                            <li><a href="{{ url('singer') }}">演出者管理</a></li>
-                            <li><a href="{{ url('work') }}">作品管理</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        <Navbar :reallink="true"></Navbar>
+        <br>
+        <br>
+        <br>
         @yield('content')
     </div>
 
-    {{-- send varaibles to JS field --}}
-    <script>
-      if (!window.data_storage){
-        window.data_storage={};
-      }
-    </script>
-    @yield('blade_pass_variables')
-    
-
-    {{-- Script BEFORE app.js --}}
-    @yield('require_js')
-    <script src="{{ asset('js/app.js') }}""></script>
-
-    {{-- Script AFTER app.js --}}
-    @yield('require_js_after')
-
-
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

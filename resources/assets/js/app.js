@@ -13,12 +13,185 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+import store from "./store"
+import router from "./router"
+import {mapState} from 'vuex'
 
-const app = new Vue({
-    el: '#app'
+var website_data = {};
+var api_url = "http://dyverse.studio/api/command.php";
+var client_id = '5dc224d1ef12f77e0c85f88d1b3b579d';
+SC.initialize({
+    client_id: '5dc224d1ef12f77e0c85f88d1b3b579d'
+});
+var sending_reg_mail = false;
+var ga = null;
+//bootstrap collapse nav
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
 });
 
+//Google analysis
+if (window.document.domain == "dyverse.studio") {
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-52977512-7', 'auto');
+    // ga('send', 'pageview');
+
+} else {
+    ga = null;
+}
+
+import navbar from './components/navbar'
+import footerpart from './components/footerpart'
+const app = new Vue({
+    el: "#app",
+    router,
+    store,
+    components: {
+      navbar,
+      footerpart
+    },
+    computed: mapState(["website_name","about","projects","services","studio_info","works","pages","posts"]),
+    template: `<div class='allcontent'>
+                  <navbar/>
+                  <div :class='["pages_area"]'>
+                      <transition name='fade' mode='out-in'>
+                          <router-view></router-view>
+                      </transition>
+                      <footerpart />
+                  </div>
+              </div>`,
+    mounted: function() {
+        // window['app']=this;
+        // 載入所有網站資料
+        var vobj = this.$store.state;
+        $.ajax({
+            url: api_url,
+            data: {
+                type: "get",
+                name: "website_data"
+            },
+            success: function(res) {
+                //注意, api中有些名稱s不一樣
+                website_data = JSON.parse(res);
+                vobj.about = website_data.about;
+                // vobj.projects = website_data.project;
+                vobj.services = website_data.service;
+                // vobj.works = website_data.track;
+                vobj.services[0].img = 'http://dyverse.studio/img/service_1.svg'
+                vobj.services[1].img = 'http://dyverse.studio/img/service_2.svg'
+                vobj.services[2].img = 'http://dyverse.studio/img/service_3.svg'
+                vobj.services[3].img = 'http://dyverse.studio/img/service_4.svg'
+                vobj.studio_info = website_data.studio_info;
+
+                // //add scroll reveal
+                // window.sr = ScrollReveal();
+                // window.sr = ScrollReveal().reveal('h1,h2,h3,h4,h5,h6');
+            }
+        });
+        axios.get("/api/singer").then((res)=>{
+            vobj.artists = res.data;
+        });
+        axios.get("/api/work/indep").then((res)=>{
+            vobj.works = res.data;
+        });
+        axios.get("/api/work").then((res)=>{
+            vobj.all_works = res.data;
+        });
+        axios.get("/api/post").then((res)=>{
+            vobj.posts = res.data;
+        });
+
+        // //如果hash改變，偵測並載入項目
+        // window.onhashchange = function() {
+        //     console.log(window.location.hash);
+        //     if (!vobj.user_nav_sw_discard) {
+        //         var target_page = window.location.hash.substr(2);
+        //         console.log(target_page);
+        //         vobj.sw_page(target_page);
+        //     } else {
+        //         vobj.user_nav_sw_discard = false;
+        //     }
+        // }
+        // if (window.location.hash != "")
+        //     window.onhashchange();
+
+    },
+    methods: {
+        sw_page: function(tar) {
+            // if (ga) {
+            //     ga('send', 'pageview', tar);
+            // }
+            // $(".allcontent").scrollTop(0);
+            // console.log("now on page:" + tar);
+            // // ga('send', 'pageview', tar);
+        },
+        get_pagetitle: function(tag) {
+            for (var i = 0; i < this.pages.length; i++) {
+                if (this.pages[i].tag == tag) {
+                    return this.pages[i].title + "-" + this.website_name;
+                }
+            }
+            return this.website_name;
+        },
+    }
+
+});
+
+
+
+
+function init_musics() {
+
+    var tracks = track_datas.tracks;
+    var playid;
+    SC.initialize({
+        client_id: client_id
+    });
+    tracks.forEach(function(value, index) {
+        console.log("init_musics: " + value.song);
+        if (value.song.indexOf("set") > -1) {
+            $.get('http://api.soundcloud.com/resolve.json?url=' +
+                value.song + '/tracks&client_id=' + client_id,
+                function(result) {
+                    track_datas.tracks[index].soundcloud_data = result.tracks;
+                });
+
+        } else if (value.song.indexOf("soundcloud") > -1) {
+            $.get('http://api.soundcloud.com/resolve.json?url=' +
+                value.song + '/tracks&client_id=' + client_id,
+                function(result) {
+                    track_datas.tracks[index].soundcloud_data = [{
+                        id: result.id
+                    }];
+                    console.log(result);
+                });
+        } else {
+            // console.log("http://www.youtubeinmp3.com/fetch/?video="+value.song);
+            track_datas.tracks[index].soundcloud_data = [{
+                id: "http://www.youtubeinmp3.com/fetch/?video=" + value.song
+            }];
+
+        }
+
+
+
+
+    });
+
+}
 
 window.onload=function(){
   if ($('#posttable').length>0){

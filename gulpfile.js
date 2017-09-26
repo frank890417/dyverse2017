@@ -1,7 +1,8 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-
+require('laravel-blade-jade');
+require('laravel-elixir-jade');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -16,8 +17,18 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
     mix.sass('app.sass')
        .webpack([
-//          '../../../node_modules/dropzone/dist/dropzone.js',
-//          '../../../node_modules/tinymce/tinymce.js',
+        //   './node_modules/babel-polyfill/dist/polyfill.js',
           'app.js'
         ],'public/js/app.js')
+    //    .webpack([
+    //       'manage/app.js'
+    //     ],'public/js/backstage/app.js')
+    //    .jade({
+    //     baseDir: './resources',
+    //     blade: true,
+    //     dest: '/views/',
+    //     pretty: true,
+    //     search: '**/*.jade',
+    //     src: '/blade/'
+    // });
 });
