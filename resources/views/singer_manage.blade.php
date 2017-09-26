@@ -22,7 +22,7 @@
                             @foreach ($singers as $singer)
                             <tr>
                                 <td><img src="{{$singer->cover}}" alt="" style="width: 80px"></td>
-                                <td><a href="singer/{{$singer->id}}/edit">{{$singer->name}}</a></td>
+                                <td><a href="/manage/singer/{{$singer->id}}/edit">{{$singer->name}}</a></td>
                                 <td><a href="{{$singer->link}}" target="_blank">{{$singer->link}}</a></td>
                                 <td>
                                     <ul>
@@ -32,10 +32,10 @@
                                     </ul>
                                 </td>
                                 <td>{!!$singer->description!!}</td>
-                                <td><a class='btn btn-default' href="singer/{{$singer->id}}/edit">編輯</a></td>
+                                <td><a class='btn btn-default' href="/manage/singer/{{$singer->id}}/edit">編輯</a></td>
                                 <td>
                                   <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$singer->id}}").submit();}'>刪除</button>
-                                  <form id='delete_post_{{$singer->id}}' action="{{url('singer/'.$singer->id)}}" method="post">
+                                  <form id='delete_post_{{$singer->id}}' action="{{url('/manage/singer/'.$singer->id)}}" method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                   </form>

@@ -67,12 +67,12 @@ class SingerController extends Controller
         $singer = Singer::find($id);
         $singer -> update($input);
         $singer -> save();
-        return Redirect::to('singer');
+        return Redirect::to('/manage/singer');
     }
 
     function destroy($id){
         $singer = Singer::find($id);
         $singer->delete();
-        return Redirect::to('singer');
+        return Redirect::to('/manage/singer');
     }
 }

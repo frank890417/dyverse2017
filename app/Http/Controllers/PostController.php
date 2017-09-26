@@ -102,7 +102,7 @@ class PostController extends Controller
       $post->update($input);
 
 
-      return Redirect::to('post');
+      return Redirect::to('/manage/post');
 
 
     }
@@ -113,7 +113,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return Redirect::to('post');
+        return Redirect::to('/manage/post');
     }
 
     public function jsonall(){

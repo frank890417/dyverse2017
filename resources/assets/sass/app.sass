@@ -136,6 +136,8 @@ h5
 h6
   font-size: 0.5em
 
+[class^="page_"]
+  min-height: 70vh
 .page
   // border-left: solid 10px $color_yellow
   // border-right: solid 10px $color_yellow
@@ -435,7 +437,9 @@ section.page_index
   a
     color: $color_black
 
-
+.page_works
+  .row_works
+    margin-bottom: 40px
 .page_works_indep
   .container
     padding: 0px 50px
@@ -497,10 +501,12 @@ section.page_index
     list-style: none
     padding: 0px
     li
-      border: solid 1px $color_yellow
+      border: solid 3px $color_yellow
       background-color: rgba($color_yellow,0)
       color: $color_black
       padding: 3px 5px
+      &:before
+        content: " "
       cursor: pointer
       &.active
         background-color: $color_yellow
@@ -525,6 +531,10 @@ footer
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3)
   position: relative
   bottom: -50px
+  // position: absolute
+  // bottom: 0
+  // left: 0
+  // width: 100%
 
   .row
     padding-top: 50px

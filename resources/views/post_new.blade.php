@@ -20,10 +20,10 @@
 
 
                     @if (isset($post))
-                    <form action="{{ url('post/'.$post->id) }}" method="post">
+                    <form action="{{ url('/manage/post/'.$post->id) }}" method="post">
                         <input type="hidden" name="_method" value="put">
                     @else
-                    <form action="{{ url('post/') }}" method="post">
+                    <form action="{{ url('/manage/post/') }}" method="post">
                         <input type="hidden" name="_method" value="post">
                     @endif
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

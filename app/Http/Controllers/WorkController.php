@@ -63,7 +63,7 @@ class WorkController extends Controller
 		$work = Work::find($id);
 		$work -> update($input);
 		$work -> save();
-		return Redirect::to('work');
+		return Redirect::to('/manage/work');
 	}
 
 
@@ -71,6 +71,6 @@ class WorkController extends Controller
 		// $input = Input::all();
 		$work = Work::find($id);
 		$work->delete();
-		return Redirect::to('work');
+		return Redirect::to('/manage/work');
 	}
 }

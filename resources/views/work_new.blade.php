@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <ol class="breadcrumb">
             <li>
-                <a href="{{ url('work') }}">作品管理</a>
+                <a href="{{ url('/manage/work') }}">作品管理</a>
             </li>
            <!--  <li>
                 <a href="#">Link</a>
@@ -14,7 +14,7 @@
         </ol>
     </div>
 </div>
-<form  class='row' action="{{ isset($work)?url('work/'.$work->id):url('work/') }}" method="post">
+<form  class='row' action="{{ isset($work)?url('/manage/work/'.$work->id):url('/manage/work/') }}" method="post">
     <div class="col-lg-9">
         <div class="panel panel-default">
             <div class="panel-heading">新增作品</div>

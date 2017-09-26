@@ -26,17 +26,17 @@
                             @foreach ($posts as $post)
                             <tr>
                                 <td><img src="{{$post->cover}}" alt="" style="width: 80px"></td>
-                                <td><a href="post/{{$post->id}}/edit">{{$post->title}}</a></td>
+                                <td><a href="/manage/post/{{$post->id}}/edit">{{$post->title}}</a></td>
                                 <td>{{$post->established_time}}</td>
                                 <td>{{$post->tag}}</td>
 
                                 <td>{{ $post->description }}</td>
                                 <td>{{$post->author?$post->author:'--'}}</td>
 
-                                <td><a class='btn btn-default' href="post/{{$post->id}}/edit">編輯</a></td>
+                                <td><a class='btn btn-default' href="/manage/post/{{$post->id}}/edit">編輯</a></td>
                                 <td>
                                   <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$post->id}}").submit();}'>刪除</button>
-                                  <form id='delete_post_{{$post->id}}' action="{{url('post/'.$post->id)}}" method="post">
+                                  <form id='delete_post_{{$post->id}}' action="{{url('/manage/post/'.$post->id)}}" method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                   </form>
@@ -46,7 +46,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <a href="{{ url('post/create') }}" class="btn btn-primary">新增文章</a>
+                    <a href="{{ url('/manage/post/create') }}" class="btn btn-primary">新增文章</a>
                 </div>
             </div>
         </div>

@@ -26,6 +26,7 @@ Route::get('/artist/{id}',$spa );
 Route::get('/blog',$spa );
 Route::get('/blog/{id}',$spa );
 Route::get('/contact',$spa );
+Route::get('/service',$spa );
 
 Route::group(['prefix'=>"manage"],function(){
     Route::resource('post','PostController');

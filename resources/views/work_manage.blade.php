@@ -23,16 +23,16 @@
                         @foreach ($works as $work)
                         <tr>
                             <td><img src="{{$work->image}}" alt="" style="width: 80px"></td>
-                            <td><a href="work/{{$work->id}}/edit">{{$work->title}}</a></td>
+                            <td><a href="/manage/work/{{$work->id}}/edit">{{$work->title}}</a></td>
                             <td>{{$work->date}}</td>
                             <td>{{$work->company}}</td>
                             <td><a href="{{$work->work_url}}" target="_blank">{{$work->work_url}}</a></td>
                             <td>{{$work->singer_name?$work->singer_name:'--'}}</td>
 
-                            <td><a class='btn btn-default' href="work/{{$work->id}}/edit">編輯</a></td>
+                            <td><a class='btn btn-default' href="/manage/work/{{$work->id}}/edit">編輯</a></td>
                             <td>
                               <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$work->id}}").submit();}'>刪除</button>
-                              <form id='delete_post_{{$work->id}}' action="{{url('work/'.$work->id)}}" method="post">
+                              <form id='delete_post_{{$work->id}}' action="{{url('/manage/work/'.$work->id)}}" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                               </form>
@@ -42,7 +42,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{ url('work/create') }}" class="btn btn-primary">新增作品</a>
+                <a href="{{ url('/manage/work/create') }}" class="btn btn-primary">新增作品</a>
             </div>
         </div>
     </div>
