@@ -24,7 +24,7 @@ SC.initialize({
     client_id: '5dc224d1ef12f77e0c85f88d1b3b579d'
 });
 var sending_reg_mail = false;
-var ga = null;
+window.ga = null;
 //bootstrap collapse nav
 $(document).on('click','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') ) {
@@ -46,11 +46,11 @@ if (window.document.domain == "dyverse.studio") {
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-52977512-7', 'auto');
+    window.ga('create', 'UA-52977512-7', 'auto');
     // ga('send', 'pageview');
 
 } else {
-    ga = null;
+    window.ga = null;
 }
 
 import navbar from './components/navbar'
