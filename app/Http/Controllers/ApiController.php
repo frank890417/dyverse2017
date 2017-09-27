@@ -67,6 +67,8 @@ class ApiController extends Controller
     public function get_netease_mv(Request $request){
         // $url = "http://music.163.com/mv?id=5597192&userid=556605107";
         $url = $request->input('url');
+        $url = str_replace("/#/","/",$url);
+        $url = str_replace("/m/","/",$url);
         $str = file_get_contents($url);
         $re = '/flashvars\".*?hurl\=.*?(http.*?mp4)/';
         preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
@@ -78,9 +80,16 @@ class ApiController extends Controller
         // Print the entire match result
         $coverurl = urldecode($matches[0][1]);
 
-        // return file_get_contents($mp4url);
+        $re = '/flag_title1\".*?title=\"(.*?)\"/';
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+        // Print the entire match result
+        $title = urldecode($matches[0][1]);
+
+
+        // return $str;
         return [
-            'cover' => $coverurl,
+            "title" => $title,
+            'cover' => $coverurl."?param=800y400",
             'video' => $mp4url
         ];
 

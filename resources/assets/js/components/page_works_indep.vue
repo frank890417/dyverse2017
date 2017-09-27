@@ -32,8 +32,9 @@
             <div v-else-if="work.work_url.indexOf('music.163')!=-1">
               
               <!-- <iframe :src='neteasemp4' width='100%' height='450px'></iframe> -->
-              <a class="videoPreview">
+              <a class="videoPreview" :href="work.work_url" target="_blank">
                 <img :src="neteasecover" alt="" style="width: 100%">
+                <h3>{{neteasetitle}}</h3>
               </a>
             </div>
             <div v-else>
@@ -69,7 +70,8 @@ export default {
       tracks: [],
       client_id: '5dc224d1ef12f77e0c85f88d1b3b579d',
       neteasemp4: "",
-      neteasecover: ""
+      neteasecover: "",
+      neteasetitle: ""
     };
   },
   computed: {
@@ -125,6 +127,7 @@ export default {
             axios.post("/api/neteasemv/",{url: url}).then((res)=>{
               this.neteasemp4=res.data.video
               this.neteasecover=res.data.cover
+              this.neteasetitle=res.data.title
             })
           }
         }
