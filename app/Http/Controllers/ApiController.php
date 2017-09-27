@@ -63,4 +63,26 @@ class ApiController extends Controller
         $posts=Post::all();
         return $posts;
     }
+
+    public function get_netease_mv(Request $request){
+        // $url = "http://music.163.com/mv?id=5597192&userid=556605107";
+        $url = $request->input('url');
+        $str = file_get_contents($url);
+        $re = '/flashvars\".*?hurl\=.*?(http.*?mp4)/';
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+        // Print the entire match result
+        $mp4url = urldecode($matches[0][1]);
+      
+        $re = '/coverImg=(http.*?jpg)/';
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+        // Print the entire match result
+        $coverurl = urldecode($matches[0][1]);
+
+        // return file_get_contents($mp4url);
+        return [
+            'cover' => $coverurl,
+            'video' => $mp4url
+        ];
+
+    }
 }

@@ -24,3 +24,6 @@ Route::group(['middleware'=>['cors']] , function(){
 	Route::get('singer/{id}/work',"ApiController@get_singer_work");
 	Route::get('singer/{id}',"ApiController@get_singer");
 });
+
+Route::post("neteasemv","ApiController@get_netease_mv");
+Route::get("neteasemv","ApiController@get_netease_mv");

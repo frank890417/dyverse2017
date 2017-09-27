@@ -44,13 +44,7 @@
 
 </head>
 <body>
-    <div id="app">
-        <Navbar :reallink="true"></Navbar>
-        <br>
-        <br>
-        <br>
-        @yield('content')
-    </div>
+    <App id="app"></App>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

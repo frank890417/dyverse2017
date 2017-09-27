@@ -7,7 +7,7 @@ echo ""
 echo "Git Commit complete!"
 echo ""
 
-echo -n "Push and Deploy (y/n)? "
+echo "Push and Deploy (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     sh deploy.sh

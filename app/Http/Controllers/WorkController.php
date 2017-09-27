@@ -45,7 +45,7 @@ class WorkController extends Controller
 		$work->update($input);
 		// dd($work);
 		$work->save();
-		return Redirect::to('work');
+		return Redirect::to('/manage/work');
 	}
 
 	function edit($id){

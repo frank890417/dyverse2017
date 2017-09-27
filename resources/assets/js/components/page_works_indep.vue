@@ -25,7 +25,18 @@
             <br class='visible-xs'>
             <h2>系列曲目</h2>
             <br>
-            <div v-if="work.work_url.indexOf('youtube')==-1">
+
+            <div v-if="work.work_url.indexOf('youtube')!=-1">
+              <iframe :src='work.embed_url' width='100%' height='350px'></iframe>
+            </div>
+            <div v-else-if="work.work_url.indexOf('music.163')!=-1">
+              
+              <!-- <iframe :src='neteasemp4' width='100%' height='450px'></iframe> -->
+              <a class="videoPreview">
+                <img :src="neteasecover" alt="" style="width: 100%">
+              </a>
+            </div>
+            <div v-else>
               <h4 v-if='(!tracks.length)'>
                 <img src='/img/loadingicon.png' class="loadingspin">載入曲目中...
               </h4>
@@ -33,14 +44,11 @@
                 
                 <h4 class="col-sm-5 col-md-4 col-lg-3">{{t.title}}</h4>
                 <div class="col-sm-7 col-md-8 col-lg-9">
-                  <audio class='work_indep_player' controls='controls' id='now_playing'>
+                  <audio class='work_indep_player' controls='controls'  controlsList="nodownload" id='now_playing'>
                     <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
                   </audio>
                 </div>
               </div>
-            </div>
-            <div v-else>
-              <iframe :src='work.embed_url' width='100%' height='350px'></iframe>
             </div>
             
           </div></div>
@@ -59,7 +67,9 @@ export default {
   data: function(){
     return {
       tracks: [],
-      client_id: '5dc224d1ef12f77e0c85f88d1b3b579d'
+      client_id: '5dc224d1ef12f77e0c85f88d1b3b579d',
+      neteasemp4: "",
+      neteasecover: ""
     };
   },
   computed: {
@@ -78,7 +88,8 @@ export default {
       this.update_tracks();
   },
   methods: {
-      audioload: function() {
+
+      audioload() {
           $(".work_indep_player").get()[0].load();
 
       },
@@ -108,7 +119,16 @@ export default {
                   vobj.audioload();
               }
           });
+          if (this.workset[0].work_url.indexOf('music.163')!=-1){
+            let url = this.workset[0].work_url
+            console.log("get ease:"+url);
+            axios.post("/api/neteasemv/",{url: url}).then((res)=>{
+              this.neteasemp4=res.data.video
+              this.neteasecover=res.data.cover
+            })
+          }
         }
+        
       }
   }
 }
