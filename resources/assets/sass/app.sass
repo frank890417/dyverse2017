@@ -69,7 +69,7 @@ section
 
 input.form-control, textarea.form-control
   background-color: transparent
-  color: $color_white
+  //color: $color_white
 
 nav.navbar
   // position: fixed
@@ -561,16 +561,17 @@ section.page_index
     list-style: none
     padding: 0px
     li
-      border: solid 3px $color_yellow
+      border-left: solid 3px $color_yellow
       background-color: rgba($color_yellow,0)
       color: $color_black
       padding: 3px 5px
+      transition: 0.5s
       &:before
         content: " "
       cursor: pointer
       &.active
-        background-color: $color_yellow
-        color: white
+        border-left: solid 10px $color_yellow
+        // color: white
       &:hover
         background-color: $color_yellow
         color: white
