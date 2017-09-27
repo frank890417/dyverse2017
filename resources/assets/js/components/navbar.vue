@@ -1,5 +1,5 @@
 <template>
-  <nav :class='["navbar",atindex_class]'>
+  <nav class="navbar-fixed-top" :class='["navbar",atindex_class]'>
     <div class='container'>
       <div class='navbar-header'>
         <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
