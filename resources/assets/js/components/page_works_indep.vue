@@ -31,8 +31,8 @@
               </h4>
               <div v-for='t in tracks' v-if='tracks' class="row">
                 
-                <h4 class="col-sm-3">{{t.title}}</h4>
-                <div class="col-sm-9">
+                <h4 class="col-sm-5 col-md-4 col-lg-3">{{t.title}}</h4>
+                <div class="col-sm-7 col-md-8 col-lg-9">
                   <audio class='work_indep_player' controls='controls' id='now_playing'>
                     <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
                   </audio>
