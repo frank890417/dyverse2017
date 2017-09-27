@@ -40,7 +40,7 @@ const router = new VueRouter({
   mode: "history"
 })
 router.beforeEach((to, from, next) => {
-  $(".pages_area").animate({scrollTop: 0});
+  $("html,body").animate({scrollTop: 0});
   next()
 })
 
