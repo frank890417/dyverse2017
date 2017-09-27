@@ -14,26 +14,29 @@
             <div class='work_content_header'>
               <br class='visible-xs'>
               <br class='visible-xs'>
-              <h5 class='work_work'>{{work.work}}</h5>
-              <h3>{{work.title}}</h3>
-              <h5><a class=company :href='work.company_url' target='_blank'>{{work.company}}</a> &nbsp; | &nbsp; {{work.date}}</h5>
-              <hr>
+              <h4 class='work_work'>{{work.work}}</h4>
+              <h1>{{work.title}}</h1>
+              <h4><a class=company :href='work.company_url' target='_blank'>{{work.company}}</a> &nbsp; | &nbsp; {{work.date}}</h4>
             </div>
             <p class=discription v-html='work.discription'></p>
           </div>
           
           <div class='infopart col-sm-4 col-md-12'>
             <br class='visible-xs'>
-            <h3>系列曲目</h3>
+            <h2>系列曲目</h2>
+            <br>
             <div v-if="work.work_url.indexOf('youtube')==-1">
               <h4 v-if='(!tracks.length)'>
                 <img src='/img/loadingicon.png' class="loadingspin">載入曲目中...
               </h4>
-              <div v-for='t in tracks' v-if='tracks'>
-                <h6>{{t.title}}</h6>
-                <audio class='work_indep_player' controls='controls' id='now_playing'>
-                  <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
-                </audio>
+              <div v-for='t in tracks' v-if='tracks' class="row">
+                
+                <h4 class="col-sm-3">{{t.title}}</h4>
+                <div class="col-sm-9">
+                  <audio class='work_indep_player' controls='controls' id='now_playing'>
+                    <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
+                  </audio>
+                </div>
               </div>
             </div>
             <div v-else>

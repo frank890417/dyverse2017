@@ -26,7 +26,8 @@
             <div class='work_content_header'>
               <br class='visible-xs'>
               <br class='visible-xs'>
-              <h3>{{artist.works[work_index].title}}</h3>
+              <h1>{{artist.works[work_index].title}}</h1>
+              <br>
             </div>
           </div>
           

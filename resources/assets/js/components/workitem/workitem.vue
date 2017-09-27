@@ -5,8 +5,8 @@
       <div class='workitem_texts'>
         <h3>{{wkitem.title}}</h3>
         <hr>
-        <h4 class=text-muted v-html='wkitem.company?wkitem.company:wkitem.discription'></h4>
-        <h5 class=text-muted>{{wkitem.date}}</h5>
+        <h4 v-html='wkitem.company?wkitem.company:wkitem.discription'></h4>
+        <h5>{{wkitem.date}}</h5>
       </div>
     </router-link>
   </div>

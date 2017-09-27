@@ -4,6 +4,7 @@
       <div class='workitem_img' :style="'background-image: url('+encodeURI(artist.cover)+')'"></div>
       <div class='workitem_texts'>
         <h3>{{artist.name}}</h3>
+        <hr>
       </div>
     </router-link>
   </div>

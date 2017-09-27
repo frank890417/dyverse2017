@@ -11,6 +11,8 @@ $color_black: #241807
 $color_yellow: #C9A063
 $color_white: #fefefe
 $color_brown: #241807
+$panel_light_grey: rgba(#eee,0.4)
+
 
 *
   font-family: "Roboto", sans-serif, "Microsoft Jhenghei" !important
@@ -114,11 +116,13 @@ nav.navbar
         
 
 h1, h2, h3, h4, h5, h6
-  font-weight: bold
+  font-weight: 600
+
+h1, h2, h3, h4, h5, h6,p
+  letter-spacing: 1px
 
 h1
   font-size: 1.5em
-  letter-spacing: 1px
 
 h2
   font-size: 1.4em
@@ -136,8 +140,16 @@ h5
 h6
   font-size: 0.5em
 
+p
+  text-align: justify
+
 [class^="page_"]
   min-height: 70vh
+  h1
+    margin-bottom: 50px
+    color: #555
+    font-weight: 400
+    letter-spacing: 1px
 .page
   // border-left: solid 10px $color_yellow
   // border-right: solid 10px $color_yellow
@@ -169,6 +181,7 @@ h6
     font-weight: normal
     position: relative
     margin-left: 10px
+    margin-bottom: 100px
 
     &:after
       content: ""
@@ -302,10 +315,7 @@ section.page_index
 //work
 .workitem
   // padding: 20px 30px
-  
-  p
-    line-height: 25px
-    font-size: 14px
+  color: #333
 
   a.inner
     cursor: pointer
@@ -401,7 +411,7 @@ section.page_index
         background-color: transparent
 
       hr
-        width: 70%
+        width: 75%
 
       .workitem_img
         &:before
@@ -416,6 +426,7 @@ section.page_index
     // position: absolute
     background-color: #fff
 
+
     // left: 0
     // bottom: 20px
     // box-shadow: 0px 0px 10px rgba(0,0,0,0.5)
@@ -427,6 +438,11 @@ section.page_index
 
     h3, h6
       margin: 0
+    h4
+      margin-top: 20px
+    h4,h5
+      color: #666
+      font-weight: 500
 
     hr
       border-bottom: solid 2px $color_yellow
@@ -444,6 +460,12 @@ section.page_index
 .row_work_indep
   // margin-top: 50px
   margin-bottom: 50px
+  h1
+    font-size: 32px
+    font-weight: 500
+    margin-bottom: 20px
+  h2
+    margin-top: 20px
 
   audio
     width: 100%
@@ -460,9 +482,10 @@ section.page_index
     float: right
   .infopart
     min-height: 200px
+    background-color: $panel_light_grey
   .discription
     line-height: 25px
-    font-size: 14px
+    margin-top: 20px
   .warningline
     height: 15px
     background-color: $color_black
