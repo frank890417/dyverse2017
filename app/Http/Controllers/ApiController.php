@@ -64,6 +64,12 @@ class ApiController extends Controller
         return $posts;
     }
 
+    public function get_youtube_info($id){
+        $content = file_get_contents("http://youtube.com/get_video_info?video_id=".$id);
+        parse_str($content, $ytarr);
+        return $ytarr;
+    }
+
     public function get_netease_mv(Request $request){
         // $url = "http://music.163.com/mv?id=5597192&userid=556605107";
         $url = $request->input('url');
@@ -89,7 +95,7 @@ class ApiController extends Controller
         // return $str;
         return [
             "title" => $title,
-            'cover' => $coverurl."?param=800y400",
+            'cover' => $coverurl."?param=600y400",
             'video' => $mp4url
         ];
 

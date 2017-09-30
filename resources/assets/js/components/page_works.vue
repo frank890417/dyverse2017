@@ -28,11 +28,11 @@ export default {
   methods: {
     cworks (works){
       var sort_date=(a,b)=>{
-        console.group("sort date")
-        console.log(a,b)
+        // console.group("sort date")
+        // console.log(a,b)
         var va = a.date.split(' ')[0].replace('.','');
         var vb = b.date.split(' ')[0].replace('.','');
-        console.groupEnd("sort date")
+        // console.groupEnd("sort date")
 
         if (!isNaN(va)){
           while (va.length<7){ va+="0"}

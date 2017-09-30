@@ -509,24 +509,50 @@ section.page_index
   a.company
     color: $color_yellow
 
-
   .listMv
     padding: 0
-    
+
     li
       list-style: none
-      height: 100px
-      background-size: cover
-      &:before
-        content: ""
-        display: block
-        +size(100%,100%)
-        position: absolute
-        left: 0
-        top: 0
-        background: linear-gradient(0deg,rgba(black,0.3) 0% ,transparent 50%)
-      .name
-        color: white
+      .item
+        height: 150px
+        background-size: cover
+        background-position: center center
+        cursor: pointer
+        position: relative
+
+        &:hover
+          &:after
+            opacity: 1
+
+
+        &:before
+          content: "▶"
+          display: block
+          font-size: 30px
+          color: white
+          position: absolute
+          text-shadow: 0px 0px 10px rgba(black,0.4)
+          left: 50%
+          top: 50%
+          transform: translate(-50%,-50%)
+          &:hover
+            transform:  translate(-50%,-50%) scale(1.2)
+
+          
+        
+        &:after
+          content: ""
+          display: block
+          +size(100%,100%)
+          position: absolute
+          left: 0
+          top: 0
+          background: linear-gradient(0deg,rgba(black,0.4) 0% ,transparent 60%)
+          opacity: 0.6
+          transition: 0.5s
+        .name
+          color: white
 
 
   .work_work
@@ -559,6 +585,10 @@ section.page_index
 .page_works_indep
   .container
     padding: 0px 50px
+  .video_container
+    iframe
+      position: relative
+      z-index: 999
   .videoPreview
     cursor: pointer
     position: relative

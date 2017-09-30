@@ -18,6 +18,8 @@ import router from "./router"
 import {mapState} from 'vuex'
 import "./sdk-3.1.2.js"
 
+
+
 var website_data = {};
 var api_url = "http://dyverse.studio/api/command.php";
 var client_id = '5dc224d1ef12f77e0c85f88d1b3b579d';
@@ -55,6 +57,8 @@ if (window.document.domain == "dyverse.studio") {
 }
 
 import App from './components/App';
+import VueYouTubeEmbed from 'vue-youtube-embed'
+Vue.use(VueYouTubeEmbed)
 
 const vm = new Vue({
     el: "#app",

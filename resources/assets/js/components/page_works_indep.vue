@@ -1,5 +1,9 @@
 <template lang="pug">
-section.page_works_indep
+section.page_works_indep(v-if="work")
+  video_fullplayer(
+    :status="full_video_status", 
+    :youtube_url="youtube_url",
+    @ended = "full_video_status=false")
   .container(:key='work.title')
     ol.breadcrumb(v-if='work')
       li.breadcrumb-item
@@ -25,9 +29,12 @@ section.page_works_indep
           p.discription(v-html='work.discription')
         .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
           h2 相關影音
+          
           ul.listMv
-            li.col-sm-4(v-for="mv in work_mvs" ,:style="{'background-image':`url(${mv.cover})`}")
-              span.name {{mv.name}}
+            li.col-sm-4(v-for="mv in work_mvs" )
+              .item(:style="{'background-image':`url(${mv.cover})`}"
+                    @click="triggerMvPlay(mv)")
+              .name {{mv.name}}
           
         .infopart.col-sm-4.col-md-12(v-if="work.work_url")
           br.visible-xs
@@ -54,6 +61,7 @@ section.page_works_indep
 
 <script>
 import {mapState} from 'vuex'
+import video_fullplayer from './video_fullplayer'
 export default {
   props: ['wkid'],
   data: function(){
@@ -62,8 +70,13 @@ export default {
       client_id: '5dc224d1ef12f77e0c85f88d1b3b579d',
       neteasemp4: "",
       neteasecover: "",
-      neteasetitle: ""
+      neteasetitle: "",
+      youtube_url: "",
+      full_video_status: false
     };
+  },
+  components: {
+    video_fullplayer
   },
   computed: {
     ...mapState(['works']),
@@ -75,36 +88,57 @@ export default {
       if (this.work){
         let original_data = JSON.parse(this.work.mv)
         let result = original_data.map(mvdata=>{
-          let mv_url = ""
-          let mv_name = ""
-          let mv_type = ""
-          let mv_cover = ""
 
-          
+              let data = {
+                name: "",
+                url: "",
+                cover: "",
+                type: ""
+              }
+              
 
 
-          if (typeof mvdata =='string'){
-            mv_url = mvdata
-          }
-          if (typeof mvdata == 'object'){
-            if (mvdata.name && mvdata.name!=""){
-              mv_name = mvdata.name
+            if (typeof mvdata =='string'){
+              data.url = mvdata
             }
-          }
+            if (typeof mvdata == 'object'){
+              if (mvdata.name && mvdata.name != ""){
+                data.name = mvdata.name
+              }
+            }
 
-          if (mv_url.indexOf("163")!=-1){
-            mv_type="netease"
-          }
-          if (mv_url.indexOf("youtube")!=-1){
-            mv_type="youtube"
-          }
+            if (data.url.indexOf("163")!=-1){
+              data.type="netease"
+             
+              let url = data.url
+              console.log("get ease:"+url);
+              axios.post("/api/neteasemv/",{url: url}).then((res)=>{
+                // data.neteasemp4=res.data.video
+                data.cover=res.data.cover
+                data.name=res.data.title
+              })
+              
+            }
 
-          return {
-            name: mv_name,
-            url: mv_url,
-            cover: mv_cover,
-            type: mv_type
-          }
+            if (data.url.indexOf("youtube")!=-1){
+              data.type="youtube"
+              let regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+              let str = data.url;
+              let m;
+
+              if ((m = regex.exec(str)) !== null) {
+                data.cover ="https://img.youtube.com/vi/"+m[2]+"/0.jpg"
+              
+                axios.get("/api/youtubemv/"+m[2]).then((res)=>{
+                  console.log(res.data.title)
+                  data.name=(data.name=="")?res.data.title:data.name
+                })
+              }
+
+            }
+
+
+          return data
         })
         
         return result
@@ -122,6 +156,15 @@ export default {
       this.update_tracks();
   },
   methods: {
+    triggerMvPlay(mv){
+      if (mv.type=="youtube"){
+        this.youtube_url = mv.url
+        this.full_video_status=true
+      }
+      if (mv.type=="netease"){
+        window.open(mv.url)
+      }
+    },
       getNewlineBr(text){
         if (text){
           return (""+text).replace(/\n/g,"<br>")

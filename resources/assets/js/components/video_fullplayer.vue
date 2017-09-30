@@ -48,7 +48,8 @@ export default {
 </script>
 
 <style scoped lang="sass?indentedSyntax">
-$color_theme: #3FBFBB
+$color_theme: #ddd
+
 .btn_video_close
   position: absolute
   right: 30px
@@ -60,19 +61,25 @@ $color_theme: #3FBFBB
   transition: 0.5s
   &:hover
     color: $color_theme
+
 .video_container
   transition: 0.5s
   opacity: 0
-  position: absolute
+  position: fixed
   width: 100%
   height: 100%
   top: 0
   left: 0
-  z-index: 10
+  z-index: 1000
   display: flex
   align-items: center
   justify-content: center
   pointer-events: none
+
+  iframe
+    position: relative;
+    z-index: 999
+    
   &:before
     content: ""
     position: absolute
@@ -80,7 +87,7 @@ $color_theme: #3FBFBB
     height: 100%
     top: 0
     left: 0
-    background-color: black
+    background-color: rgba(0,0,0,0.85)
     opacity: 0
     pointer-events: none
     transition: 0.5s
