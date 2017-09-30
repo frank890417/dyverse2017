@@ -185,8 +185,9 @@ export default {
       },
       update_tracks (){
         var vobj = this;
-        if (this.work && this.work.work_url.indexOf("soundcloud")!=-1){
-          $.ajax({
+        if (this.work){
+          if ( this.work.work_url.indexOf("soundcloud")!=-1){
+            $.ajax({
               url: 'http://api.soundcloud.com/resolve.json',
               data: {
                   client_id: vobj.client_id,
@@ -202,7 +203,9 @@ export default {
                   // console.log("https://api.soundcloud.com/tracks/" + res.id + "/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d");
                   vobj.audioload();
               }
-          });
+            });
+
+          }
           if (this.work && this.work.work_url.indexOf('music.163')!=-1){
             let url = this.work.work_url
             console.log("get ease:"+url);
