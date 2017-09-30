@@ -79,7 +79,10 @@ export default {
         return text.replace(/\n/g,"<br>")
       },
       audioload() {
-          $(".work_indep_player").get()[0].load();
+        let player = $(".work_indep_player").get()[0]
+        if (player){
+          player.load();
+        }
 
       },
       css_img(image_url){
