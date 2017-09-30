@@ -1,64 +1,49 @@
-<template>
-  <section class='page_works_indep'>
-    <div class='container' v-for='work in workset'>
-      <ol class='breadcrumb' v-if='work'> 
-          <li class='breadcrumb-item'><router-link to='/works'>作品</router-link></li> 
-          <li class='breadcrumb-item active'>{{work.title}}</li>
-      </ol>
-      <div class='row row_work_indep' v-if='work'>
-        <div class='col-md-4 col-xs-12 work_indep_img'  :style='css_img(work.image)' >
-          <h3 class='nametag'>{{work.title}}</h3>
-        </div>
-        <div class='col-sm-12 col-md-8'>
-          <div class='col-sm-8 col-md-12'>
-            <div class='work_content_header'>
-              <br class='visible-xs'>
-              <br class='visible-xs'>
-              <h4 class='work_work'>{{work.work}}</h4>
-              <h1>{{work.title}}</h1>
-              <h4><a class=company :href='work.company_url' target='_blank'>{{work.company}}</a> &nbsp; | &nbsp; {{work.date}}</h4>
-            </div>
-            <p class=discription v-html='work.discription'></p>
-          </div>
-          
-          <div class='infopart col-sm-4 col-md-12'>
-            <br class='visible-xs'>
-            <h2>系列曲目</h2>
-            <br>
+<template lang="pug">
+section.page_works_indep
+  .container(v-for='work in workset', :key='work.title')
+    ol.breadcrumb(v-if='work')
+      li.breadcrumb-item
+        router-link(to='/works') 作品
+      li.breadcrumb-item.active {{work.title}}
+    .row.row_work_indep(v-if='work')
+      .col-md-4.col-xs-12
+        .work_indep_img(:style='css_img(work.image)')
+          h3.nametag {{work.title}}
+        div.part_credit(v-if="work.credit!=''")
+          h4 Contributer
+          p(v-html="getNewlineBr(work.credit)")
+      .col-sm-12.col-md-8
+        .col-sm-8.col-md-12
+          .work_content_header
+            br.visible-xs
+            br.visible-xs
+            h4.work_work {{work.work}}
+            h1 {{work.title}}
+            h4
+              a.company(:href='work.company_url', target='_blank') {{work.company}}
+              |    |   {{work.date}}
+          p.discription(v-html='work.discription')
+        .infopart.col-sm-4.col-md-12
+          br.visible-xs
+          h2 系列曲目
+          br
+          div(v-if="work.work_url.indexOf('youtube')!=-1")
+            iframe(:src='work.embed_url', width='100%', height='350px')
+          div(v-else-if="work.work_url.indexOf('music.163')!=-1")
+            // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
+            a.videoPreview(:href='work.work_url', target='_blank')
+              img(:src='neteasecover', alt='', style='width: 100%')
+              h3 {{neteasetitle}}
+          div(v-else='')
+            h4(v-if='(!tracks.length)')
+              img.loadingspin(src='/img/loadingicon.png')
+              | 載入曲目中...
+            .row(v-for='t in tracks', v-if='tracks')
+              h4.col-sm-5.col-md-4.col-lg-3 {{t.title}}
+              .col-sm-7.col-md-8.col-lg-9
+                audio#now_playing.work_indep_player(controls='controls', controlslist='nodownload')
+                  source#nowsource(type='audio/mp3', :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"')
 
-            <div v-if="work.work_url.indexOf('youtube')!=-1">
-              <iframe :src='work.embed_url' width='100%' height='350px'></iframe>
-            </div>
-            <div v-else-if="work.work_url.indexOf('music.163')!=-1">
-              
-              <!-- <iframe :src='neteasemp4' width='100%' height='450px'></iframe> -->
-              <a class="videoPreview" :href="work.work_url" target="_blank">
-                <img :src="neteasecover" alt="" style="width: 100%">
-                <h3>{{neteasetitle}}</h3>
-              </a>
-            </div>
-            <div v-else>
-              <h4 v-if='(!tracks.length)'>
-                <img src='/img/loadingicon.png' class="loadingspin">載入曲目中...
-              </h4>
-              <div v-for='t in tracks' v-if='tracks' class="row">
-                
-                <h4 class="col-sm-5 col-md-4 col-lg-3">{{t.title}}</h4>
-                <div class="col-sm-7 col-md-8 col-lg-9">
-                  <audio class='work_indep_player' controls='controls'  controlsList="nodownload" id='now_playing'>
-                    <source id='nowsource' type='audio/mp3' :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"'/>
-                  </audio>
-                </div>
-              </div>
-            </div>
-            
-          </div></div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>  
 </template>
 
 <script>
@@ -90,7 +75,9 @@ export default {
       this.update_tracks();
   },
   methods: {
-
+      getNewlineBr(text){
+        return text.replace(/\n/g,"<br>")
+      },
       audioload() {
           $(".work_indep_player").get()[0].load();
 

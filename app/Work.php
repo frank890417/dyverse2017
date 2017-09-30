@@ -8,7 +8,7 @@ class Work extends Model
 {
     //
     protected $fillable = 
-    ['title','image','discription','work','date','company','work_url','company_url','updated_at','created_at','singerid'];
+    ['title','image','discription','work','credit','date','company','work_url','company_url','updated_at','created_at','singerid'];
     protected $appends = ['embed_url','media_type'];
 
     public function setDateAttribute($value){
