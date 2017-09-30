@@ -61,7 +61,7 @@
                     <input class='form-control' type="text" name="company_url" value="{{ isset($work)?$work->company_url:'' }}">
                 </div>
                 <div class="form-group">
-                    <label for="credit">Credit</label>
+                    <label for="credit">Contributer</label>
                     <textarea class='form-control' type="text" name="credit" rows=15 >{{ isset($work)?$work->credit:'' }}</textarea>
                 </div>
             

@@ -42,16 +42,25 @@ html, body
   padding: 0
   left: 0
   top: 0
-  +size(100%,100%)
+  // +size(100%,100%)
   background-color: $color_white
   color: $color_brown
   font-size: 15px
-  overflow: hidden
+  // overflow: hidden
   height: 100vh
   box-sizing: border-box
 
+
 html
-  border: solid 10px $color_yellow
+  &:after
+    content: ""
+    display: block
+    position: fixed
+    left: 0
+    top: 0
+    +size(100%,100%)
+    border: solid 10px $color_yellow
+    pointer-events: none
   
 body
   height: calc(100vh - 20px)

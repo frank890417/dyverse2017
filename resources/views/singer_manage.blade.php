@@ -8,7 +8,7 @@
                 <div class="panel-heading">演出者管理</div>
 
                 <div class="panel-body">
-                    <table class='table table-hover'>
+                    <table class='table table-hover' id=posttable>
                         <thead>
                             <th>縮圖</th>
                             <th style="width: 100px">名稱</th>
