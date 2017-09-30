@@ -64,8 +64,30 @@ const vm = new Vue({
     el: "#app",
     router,
     store,
+    data:{
+      mvdata: window.mvdata || []
+    },
     components: {
-        App
+      App
+    },
+    mounted(){
+        if (this.mvdata){
+            this.mvdata=this.mvdata.map((d)=>{
+                console.log(d)
+                if (typeof d=="string"){
+                    return {
+                        name: "",
+                        url: d
+                    }
+                }else{
+                    return {
+                        name: d.name || "",
+                        url: d.url || ""
+                    }
+                }
+            })
+            
+        }
     }
     
 });

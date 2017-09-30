@@ -89,14 +89,12 @@ export default {
         let original_data = JSON.parse(this.work.mv)
         let result = original_data.map(mvdata=>{
 
-              let data = {
-                name: "",
-                url: "",
-                cover: "",
-                type: ""
-              }
-              
-
+            let data = {
+              name: mvdata.name || "",
+              url: "",
+              cover: "",
+              type: ""
+            }
 
             if (typeof mvdata =='string'){
               data.url = mvdata
@@ -104,6 +102,7 @@ export default {
             if (typeof mvdata == 'object'){
               if (mvdata.name && mvdata.name != ""){
                 data.name = mvdata.name
+                data.url = mvdata.url
               }
             }
 

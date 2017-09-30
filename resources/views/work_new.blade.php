@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="credit">Contributer</label>
-                    <textarea class='form-control' type="text" name="credit" rows=15 >{{ isset($work)?$work->credit:'' }}</textarea>
+                    <textarea class='form-control' type="text" name="credit" rows=8 >{{ isset($work)?$work->credit:'' }}</textarea>
                 </div>
             
 
@@ -81,7 +81,7 @@
     </div>
     <div class="col-lg-9">
         <div class="panel panel-default">
-            <div class="panel-heading">新增作品</div>
+            <div class="panel-heading">作品資訊</div>
 
             <div class="panel-body">
                 <input type="hidden" name="_method" value="{{ isset($work)?'put':'post' }}">
@@ -106,11 +106,43 @@
                 </div>
                 <div class="form-group">
                     <label for="discription">作品描述</label>
-                    <textarea class='form-control' type="text" name="discription" id='content' rows=15 >{{ isset($work)?$work->discription:'' }}</textarea>
+                    <textarea class='form-control' type="text" name="discription" id='content' rows=10 >{{ isset($work)?$work->discription:'' }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="mv">相關影音</label>
-                    <textarea class='form-control' type="text" name="mv" id='content' rows=15 >{{ isset($work)?$work->mv:'' }}</textarea>
+                    <textarea class='form-control' type="hidden" style="display: none;" name="mv" id='content' rows=10 :value="JSON.stringify(mvdata)" type="hidden"></textarea>
+                    <ul v-if="mvdata" class='list-group'>
+                        <li v-for="(mv,mvid) in mvdata" class='list-group-item'>
+                            <div class="form-group">
+                                <h4 v-if="mv.name!=''">@{{mvid+1}}. @{{mv.name}}
+                                    <div class="btn btn-danger" @click="mvdata.splice(mvid,1)"> - </div>
+                                </h4>
+                                <h4 v-else>@{{mvid+1}}. 自動抓取
+                                    <div class="btn btn-danger" @click="mvdata.splice(mvid,1)"> - </div>
+                                </h4>
+                            </div>
+
+                            <div class="form-group-inline row">
+                                <label class='col-sm-3' for="名稱">名稱</label>
+                                <div class="col-sm-9">
+                                    <input class='form-control' type="text" v-model="mvdata[mvid].name">
+                                </div> 
+                                
+                            </div>
+
+                            <div class="form-group-inline row">
+                                <label class='col-sm-3' for="網址">網址</label>
+                                <div class="col-sm-9">
+                                    <input class='form-control' type="text" v-model="mvdata[mvid].url">
+                                </div> 
+                            </div>
+                        </li>
+                        <li>
+                            <br>
+                            <div class="btn btn-primary" @click="mvdata.push({name: '',url:''})"> + 新增MV </div>
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -127,6 +159,8 @@
     window.require_js={};
     window.require_js.dropzone=true;
     window.require_js.tinymce=true;
+    window.mvdata = {!! $work->mv !!};
+
     
   </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.3/tinymce.min.js'></script>
