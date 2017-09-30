@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class WorkAddCredit extends Migration
+class WorkAddMv extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class WorkAddCredit extends Migration
     {
         //
         Schema::table('works',function($table){
-            $table->string('credit',1000)->default("")->nullable();
+            $table->json('mv')->nullable();
         });
         
     }
@@ -29,7 +29,7 @@ class WorkAddCredit extends Migration
     {
         //
         Schema::table('works',function($table){
-            $table->dropColumn('credit');
+            $table->dropColumn('mv');
         });
         
     }

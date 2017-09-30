@@ -1,6 +1,6 @@
 <template lang="pug">
 section.page_works_indep
-  .container(v-for='work in workset', :key='work.title')
+  .container(:key='work.title')
     ol.breadcrumb(v-if='work')
       li.breadcrumb-item
         router-link(to='/works') 作品
@@ -9,7 +9,7 @@ section.page_works_indep
       .col-md-4.col-xs-12
         .work_indep_img(:style='css_img(work.image)')
           h3.nametag {{work.title}}
-        div.part_credit(v-if="work.credit!=''")
+        div.part_credit(v-if="work.credit && work.credit!=''")
           h4 Contributer
           p(v-html="getNewlineBr(work.credit)")
       .col-sm-12.col-md-8
@@ -23,7 +23,13 @@ section.page_works_indep
               a.company(:href='work.company_url', target='_blank') {{work.company}}
               |    |   {{work.date}}
           p.discription(v-html='work.discription')
-        .infopart.col-sm-4.col-md-12
+        .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
+          h2 相關影音
+          ul.listMv
+            li.col-sm-4(v-for="mv in work_mvs" ,:style="{'background-image':`url(${mv.cover})`}")
+              span.name {{mv.name}}
+          
+        .infopart.col-sm-4.col-md-12(v-if="work.work_url")
           br.visible-xs
           h2 系列曲目
           br
@@ -61,13 +67,54 @@ export default {
   },
   computed: {
     ...mapState(['works']),
-    workset: function(){
+    work: function(){
       var vobj=this;
-      return this.works.filter(w=>w.id==vobj.wkid);
+      return this.works.find(w=>w.id==vobj.wkid);
+    },
+    work_mvs(){
+      if (this.work){
+        let original_data = JSON.parse(this.work.mv)
+        let result = original_data.map(mvdata=>{
+          let mv_url = ""
+          let mv_name = ""
+          let mv_type = ""
+          let mv_cover = ""
+
+          
+
+
+          if (typeof mvdata =='string'){
+            mv_url = mvdata
+          }
+          if (typeof mvdata == 'object'){
+            if (mvdata.name && mvdata.name!=""){
+              mv_name = mvdata.name
+            }
+          }
+
+          if (mv_url.indexOf("163")!=-1){
+            mv_type="netease"
+          }
+          if (mv_url.indexOf("youtube")!=-1){
+            mv_type="youtube"
+          }
+
+          return {
+            name: mv_name,
+            url: mv_url,
+            cover: mv_cover,
+            type: mv_type
+          }
+        })
+        
+        return result
+        
+      }
+      return []
     }
   },
   watch: {
-    workset (){
+    work (){
       this.update_tracks();
     }
   },
@@ -76,7 +123,10 @@ export default {
   },
   methods: {
       getNewlineBr(text){
-        return text.replace(/\n/g,"<br>")
+        if (text){
+          return (""+text).replace(/\n/g,"<br>")
+        }
+        return ""
       },
       audioload() {
         let player = $(".work_indep_player").get()[0]
@@ -93,12 +143,12 @@ export default {
       },
       update_tracks (){
         var vobj = this;
-        if (this.workset[0]){
+        if (this.work){
           $.ajax({
               url: 'http://api.soundcloud.com/resolve.json',
               data: {
                   client_id: vobj.client_id,
-                  url: vobj.workset[0].work_url
+                  url: vobj.work.work_url
               },
               success: function(res) {
                   if (res.tracks){
@@ -111,8 +161,8 @@ export default {
                   vobj.audioload();
               }
           });
-          if (this.workset[0].work_url.indexOf('music.163')!=-1){
-            let url = this.workset[0].work_url
+          if (this.work && this.work.work_url.indexOf('music.163')!=-1){
+            let url = this.work.work_url
             console.log("get ease:"+url);
             axios.post("/api/neteasemv/",{url: url}).then((res)=>{
               this.neteasemp4=res.data.video

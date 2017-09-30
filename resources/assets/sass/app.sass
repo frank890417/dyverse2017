@@ -500,6 +500,7 @@ section.page_index
 
     
 
+
   audio
     width: 100%
   a.switch
@@ -507,6 +508,27 @@ section.page_index
     color: $color_yellow
   a.company
     color: $color_yellow
+
+
+  .listMv
+    padding: 0
+    
+    li
+      list-style: none
+      height: 100px
+      background-size: cover
+      &:before
+        content: ""
+        display: block
+        +size(100%,100%)
+        position: absolute
+        left: 0
+        top: 0
+        background: linear-gradient(0deg,rgba(black,0.3) 0% ,transparent 50%)
+      .name
+        color: white
+
+
   .work_work
     padding: 3px 10px
     border: solid 1px $color_black

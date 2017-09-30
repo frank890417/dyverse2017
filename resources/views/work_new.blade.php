@@ -108,6 +108,10 @@
                     <label for="discription">作品描述</label>
                     <textarea class='form-control' type="text" name="discription" id='content' rows=15 >{{ isset($work)?$work->discription:'' }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="mv">相關影音</label>
+                    <textarea class='form-control' type="text" name="mv" id='content' rows=15 >{{ isset($work)?$work->mv:'' }}</textarea>
+                </div>
             </div>
         </div>
     </div>
