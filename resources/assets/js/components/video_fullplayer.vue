@@ -16,7 +16,7 @@
 import $ from "jquery"
 import { getIdFromURL, getTimeFromURL } from 'vue-youtube-embed'
 export default {
-  props: ["youtube_url","player_height","status"],
+  props: ["youtube_url","status"],
   mounted() {
       console.log('full yt player mounted.')
     this.section_playing=this.status
@@ -36,7 +36,12 @@ export default {
       return getIdFromURL(this.youtube_url)
     },
     player_width(){
-      return $(window).outerHeight()
+      let result =  $(window).outerWidth()
+      return result>800?800:result
+    },
+    player_height(){
+      let result =  $(window).outerHeight()
+      return result>600?600:result
     }
   },
   methods: {
