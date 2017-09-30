@@ -29,6 +29,9 @@ Route::get('/contact',$spa );
 Route::get('/service',$spa );
 
 Route::group(['prefix'=>"manage"],function(){
+    Route::get('/',function(){
+        return redirect()->to('/manage/work');
+    });
     Route::resource('post','PostController');
     Route::resource('work','WorkController');
     Route::resource('singer','SingerController');

@@ -206,7 +206,7 @@ export default {
             });
 
           }
-          if (this.work && this.work.work_url.indexOf('music.163')!=-1){
+          if (this.work.work_url.indexOf('music.163')!=-1){
             let url = this.work.work_url
             console.log("get ease:"+url);
             axios.post("/api/neteasemv/",{url: url}).then((res)=>{
