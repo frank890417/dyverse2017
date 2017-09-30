@@ -90,7 +90,7 @@ export default {
         let result = original_data.map(mvdata=>{
 
             let data = {
-              name: mvdata.name || "",
+              name: "",
               url: "",
               cover: "",
               type: ""
@@ -102,8 +102,8 @@ export default {
             if (typeof mvdata == 'object'){
               if (mvdata.name && mvdata.name != ""){
                 data.name = mvdata.name
-                data.url = mvdata.url
               }
+              data.url = mvdata.url
             }
 
             if (data.url.indexOf("163")!=-1){
@@ -185,7 +185,7 @@ export default {
       },
       update_tracks (){
         var vobj = this;
-        if (this.work){
+        if (this.work && this.work.work_url.indexOf("soundcloud")!=-1){
           $.ajax({
               url: 'http://api.soundcloud.com/resolve.json',
               data: {
