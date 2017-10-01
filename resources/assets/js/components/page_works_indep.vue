@@ -31,11 +31,12 @@ section.page_works_indep(v-if="work")
           .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
             h2 相關影音
             
-            ul.listMv
-              li.listMvItem.col-sm-4(v-for="mv in work_mvs" )
-                .item(:style="{'background-image':`url(${mv.cover})`}"
-                      @click="triggerMvPlay(mv)")
-                .name {{mv.name}}
+            ul.listMv.row
+              li.col-sm-4(v-for="mv in work_mvs" )
+                mvitem(:key="mv.name", :mv_url='mv.url')
+                //- .item(:style="{'background-image':`url(${mv.cover})`}"
+                //-       @click="triggerMvPlay(mv)")
+                //- .name {{mv.name}}
             
           .infopart.col-sm-4.col-md-12(v-if="work.work_url")
             br.visible-xs
@@ -63,6 +64,7 @@ section.page_works_indep(v-if="work")
 <script>
 import {mapState} from 'vuex'
 import video_fullplayer from './video_fullplayer'
+import mvitem from './workitem/mvitem'
 export default {
   props: ['wkid'],
   data: function(){
@@ -77,7 +79,7 @@ export default {
     };
   },
   components: {
-    video_fullplayer
+    video_fullplayer,mvitem
   },
   computed: {
     ...mapState(['works']),
@@ -107,35 +109,35 @@ export default {
               data.url = mvdata.url
             }
 
-            if (data.url.indexOf("163")!=-1){
-              data.type="netease"
+            // if (data.url.indexOf("163")!=-1){
+            //   data.type="netease"
              
-              let url = data.url
-              console.log("get ease:"+url);
-              axios.post("/api/neteasemv/",{url: url}).then((res)=>{
-                // data.neteasemp4=res.data.video
-                data.cover=res.data.cover
-                data.name=res.data.title
-              })
+            //   let url = data.url
+            //   console.log("get ease:"+url);
+            //   axios.post("/api/neteasemv/",{url: url}).then((res)=>{
+            //     // data.neteasemp4=res.data.video
+            //     data.cover=res.data.cover
+            //     data.name=res.data.title
+            //   })
               
-            }
+            // }
 
-            if (data.url.indexOf("youtube")!=-1){
-              data.type="youtube"
-              let regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-              let str = data.url;
-              let m;
+            // if (data.url.indexOf("youtube")!=-1){
+            //   data.type="youtube"
+            //   let regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            //   let str = data.url;
+            //   let m;
 
-              if ((m = regex.exec(str)) !== null) {
-                data.cover ="https://img.youtube.com/vi/"+m[2]+"/0.jpg"
+            //   if ((m = regex.exec(str)) !== null) {
+            //     data.cover ="https://img.youtube.com/vi/"+m[2]+"/0.jpg"
               
-                axios.get("/api/youtubemv/"+m[2]).then((res)=>{
-                  console.log(res.data.title)
-                  data.name=(data.name=="")?res.data.title:data.name
-                })
-              }
+            //     axios.get("/api/youtubemv/"+m[2]).then((res)=>{
+            //       console.log(res.data.title)
+            //       data.name=(data.name=="")?res.data.title:data.name
+            //     })
+            //   }
 
-            }
+            // }
 
 
           return data
