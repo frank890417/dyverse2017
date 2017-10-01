@@ -17,45 +17,46 @@ section.page_works_indep(v-if="work")
           h4 Contributer
           p(v-html="getNewlineBr(work.credit)")
       .col-sm-12.col-md-8
-        .col-sm-8.col-md-12
-          .work_content_header
+        .row
+          .col-sm-8.col-md-12
+            .work_content_header
+              br.visible-xs
+              br.visible-xs
+              h4.work_work {{work.work}}
+              h1 {{work.title}}
+              h4
+                a.company(:href='work.company_url', target='_blank') {{work.company}}
+                |    |   {{work.date}}
+            p.discription(v-html='work.discription')
+          .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
+            h2 相關影音
+            
+            ul.listMv
+              li.listMvItem.col-sm-4(v-for="mv in work_mvs" )
+                .item(:style="{'background-image':`url(${mv.cover})`}"
+                      @click="triggerMvPlay(mv)")
+                .name {{mv.name}}
+            
+          .infopart.col-sm-4.col-md-12(v-if="work.work_url")
             br.visible-xs
-            br.visible-xs
-            h4.work_work {{work.work}}
-            h1 {{work.title}}
-            h4
-              a.company(:href='work.company_url', target='_blank') {{work.company}}
-              |    |   {{work.date}}
-          p.discription(v-html='work.discription')
-        .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
-          h2 相關影音
-          
-          ul.listMv
-            li.col-sm-4(v-for="mv in work_mvs" )
-              .item(:style="{'background-image':`url(${mv.cover})`}"
-                    @click="triggerMvPlay(mv)")
-              .name {{mv.name}}
-          
-        .infopart.col-sm-4.col-md-12(v-if="work.work_url")
-          br.visible-xs
-          h2 系列曲目
-          br
-          div(v-if="work.work_url.indexOf('youtube')!=-1")
-            iframe(:src='work.embed_url', width='100%', height='350px')
-          div(v-else-if="work.work_url.indexOf('music.163')!=-1")
-            // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
-            a.videoPreview(:href='work.work_url', target='_blank')
-              img(:src='neteasecover', alt='', style='width: 100%')
-              h3 {{neteasetitle}}
-          div(v-else='')
-            h4(v-if='(!tracks.length)')
-              img.loadingspin(src='/img/loadingicon.png')
-              | 載入曲目中...
-            .row(v-for='t in tracks', v-if='tracks')
-              h4.col-sm-5.col-md-4.col-lg-3 {{t.title}}
-              .col-sm-7.col-md-8.col-lg-9
-                audio#now_playing.work_indep_player(controls='controls', controlslist='nodownload')
-                  source#nowsource(type='audio/mp3', :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"')
+            h2 系列曲目
+            br
+            div(v-if="work.work_url.indexOf('youtube')!=-1")
+              iframe(:src='work.embed_url', width='100%', height='350px')
+            div(v-else-if="work.work_url.indexOf('music.163')!=-1")
+              // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
+              a.videoPreview(:href='work.work_url', target='_blank')
+                img(:src='neteasecover', alt='', style='width: 100%')
+                h3 {{neteasetitle}}
+            div(v-else='')
+              h4(v-if='(!tracks.length)')
+                img.loadingspin(src='/img/loadingicon.png')
+                | 載入曲目中...
+              .row(v-for='t in tracks', v-if='tracks')
+                h4.col-sm-5.col-md-4.col-lg-3 {{t.title}}
+                .col-sm-7.col-md-8.col-lg-9
+                  audio#now_playing.work_indep_player(controls='controls', controlslist='nodownload')
+                    source#nowsource(type='audio/mp3', :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"')
 
 </template>
 

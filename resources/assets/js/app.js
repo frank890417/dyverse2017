@@ -51,6 +51,7 @@ if (window.document.domain == "dyverse.studio") {
 
     window.ga('create', 'UA-52977512-7', 'auto');
     // ga('send', 'pageview');
+    
 
 } else {
     window.ga = null;

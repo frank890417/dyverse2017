@@ -481,6 +481,59 @@ section.page_index
     padding-bottom: 60%
     background-color: $color_black
 
+
+
+//youtube 小預覽圖
+.listMv
+  padding: 0
+
+
+
+.listMvItem
+  list-style: none
+  height: 150px
+  background-size: cover
+  background-position: center center
+  cursor: pointer
+  position: relative
+
+  &:hover
+    &:after
+      opacity: 1
+
+
+  &:before
+    content: "▶"
+    display: block
+    font-size: 30px
+    color: white
+    position: absolute
+    text-shadow: 0px 0px 10px rgba(black,0.4)
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
+    &:hover
+      transform:  translate(-50%,-50%) scale(1.2)
+
+    
+  
+  &:after
+    content: ""
+    display: block
+    +size(100%,100%)
+    position: absolute
+    left: 0
+    top: 0
+    background: linear-gradient(0deg,rgba(black,0.4) 0% ,transparent 60%)
+    opacity: 0.6
+    transition: 0.5s
+  .name
+    color: white
+
+
+
+
+//作品頁面
 //work indep
 .row_work_indep
   // margin-top: 50px
@@ -509,50 +562,6 @@ section.page_index
   a.company
     color: $color_yellow
 
-  .listMv
-    padding: 0
-
-    li
-      list-style: none
-      .item
-        height: 150px
-        background-size: cover
-        background-position: center center
-        cursor: pointer
-        position: relative
-
-        &:hover
-          &:after
-            opacity: 1
-
-
-        &:before
-          content: "▶"
-          display: block
-          font-size: 30px
-          color: white
-          position: absolute
-          text-shadow: 0px 0px 10px rgba(black,0.4)
-          left: 50%
-          top: 50%
-          transform: translate(-50%,-50%)
-          &:hover
-            transform:  translate(-50%,-50%) scale(1.2)
-
-          
-        
-        &:after
-          content: ""
-          display: block
-          +size(100%,100%)
-          position: absolute
-          left: 0
-          top: 0
-          background: linear-gradient(0deg,rgba(black,0.4) 0% ,transparent 60%)
-          opacity: 0.6
-          transition: 0.5s
-        .name
-          color: white
 
 
   .work_work

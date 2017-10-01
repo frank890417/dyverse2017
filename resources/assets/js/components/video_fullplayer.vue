@@ -1,7 +1,7 @@
 <template lang='jade'>
 .video_container(:class="{active: section_playing}")
   transition(name="fade")
-    youtube(
+    youtube.front(
     :video-id="youtube_id", 
     :player-width="player_width", 
     :player-height="player_height",
@@ -61,11 +61,15 @@ $color_theme: #ddd
   top: 150px
   color: white
   font-size: 40px
-  z-index: 30
+  z-index: 2000
   cursor: pointer
   transition: 0.5s
   &:hover
     color: $color_theme
+
+.front
+  position: relative
+  z-index: 3000
 
 .video_container
   transition: 0.5s
@@ -82,8 +86,8 @@ $color_theme: #ddd
   pointer-events: none
 
   iframe
-    position: relative;
-    z-index: 999
+    position: relative
+    z-index: 1500
     
   &:before
     content: ""
@@ -96,6 +100,7 @@ $color_theme: #ddd
     opacity: 0
     pointer-events: none
     transition: 0.5s
+    z-index: 50
 
   &.active
     pointer-events: initial
