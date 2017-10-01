@@ -1,23 +1,19 @@
-<template>
-<section class='page_post_indep'>
-  <div class='container' v-if='post.title' v-for='post in postset'>
-    <ol class='breadcrumb'> 
-        <li class='breadcrumb-item'><router-link to='/blog'>文章</router-link></li> 
-        <li class='breadcrumb-item active' v-if='post.title'>{{post.title}}</li> 
-    </ol>
-    <div class='row row_post_indep'>
-      <div class='col-sm-12 blog_indep_img' :style='"background-image: url("+post.cover+")"' >
-      </div>
-      <div class='col-sm-8' v-if='post.title'>
-        <div class='post_content_header'>
-          <h5 class='post_post'>{{post.post}}</h5>
-          <h3>{{post.title}}</h3>
-        </div>
-        <p class=discription v-html='post.content'></p>
-      </div>
-    </div>
-  </div>
-</section>  
+<template lang="pug">
+section.page_post_indep
+  .container(v-if='post')
+    ol.breadcrumb
+      li.breadcrumb-item
+        router-link(to='/blog') 文章
+      li.breadcrumb-item.active(v-if='post.title') {{post.title}}
+    .row.row_post_indep
+      .col-sm-12
+        .col-sm-12.blog_indep_img(:style='"background-image: url("+post.cover+")"')
+        .col-sm-8(v-if='post.title')
+          .post_content_header
+            h5.post_post {{post.post}}
+            h3 {{post.title}}
+          p.discription(v-html='post.content')
+
 </template>
 
 <script>
@@ -26,12 +22,8 @@ export default {
   props: ['wkid'],
   computed: {
     ...mapState(['posts']),
-    postset(){
-      // console.log(this.posts);
-      console.log(this.posts.filter((p)=>(p.id==this.wkid)));
-      if (this.posts.length>0)
-        return this.posts.filter((p)=>(p.id==this.wkid));
-      return [];
+    post(){
+      return this.posts.find((p)=>(p.id==this.wkid));
     }
   }
 }

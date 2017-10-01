@@ -21,9 +21,10 @@ section.page_works_indep(v-if="work")
           .col-sm-8.col-md-12
             .work_content_header
               br.visible-xs
-              br.visible-xs
               h4.work_work {{work.work}}
-              h1 {{work.title}}
+              h1 
+                br.visible-xs
+                | {{work.title}}
               h4
                 a.company(:href='work.company_url', target='_blank') {{work.company}}
                 |    |   {{work.date}}
