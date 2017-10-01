@@ -1,5 +1,6 @@
 <template lang='jade'>
 .video_container(:class="{active: section_playing}")
+  .mask(@click="ended")
   transition(name="fade")
     youtube.front(
     :video-id="youtube_id", 
@@ -40,7 +41,7 @@ export default {
       return result>800?800:result
     },
     player_height(){
-      let result =  $(window).outerHeight()
+      let result =  $(window).outerHeight() - 200
       return result>600?600:result
     }
   },
@@ -56,9 +57,9 @@ export default {
 $color_theme: #ddd
 
 .btn_video_close
-  position: absolute
+  position: fixed
   right: 30px
-  top: 150px
+  top: 30px
   color: white
   font-size: 40px
   z-index: 2000
@@ -89,16 +90,13 @@ $color_theme: #ddd
     position: relative
     z-index: 1500
     
-  &:before
-    content: ""
+  .mask
     position: absolute
     width: 100%
     height: 100%
     top: 0
     left: 0
     background-color: rgba(0,0,0,0.85)
-    opacity: 0
-    pointer-events: none
     transition: 0.5s
     z-index: 50
 
