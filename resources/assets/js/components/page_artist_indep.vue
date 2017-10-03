@@ -21,25 +21,22 @@ section.page_artist_indep(v-if='artist')
       .col-md-9(v-if='artist.works[work_index]')
         .row
           .col-sm-8.col-md-12
+          .col-sm-12(v-if='artist.works[work_index]')
             .work_content_header
               br.visible-xs
               br.visible-xs
               h1 {{artist.works[work_index].title}}
-              br
-          .col-sm-12(v-if='artist.works[work_index]')
             br.visible-xs
             iframe(width='100%', height='400', :src='artist.works[work_index].embed_url', frameborder='0', allowfullscreen='')
             br
             br
             p(v-html='artist.works[work_index].discription')
-
             hr
-            br
-          .col-sm-12
-            h3 其他作品
-            .row
-              .col-sm-4(v-for='(work,id) in artist.works')
-                mvitem(:key="work.name", :mv_url='work.work_url')
+        .col-sm-12
+          h3 相關作品
+          .row
+            .col-sm-3(v-for='(work,id) in artist.works', @click='work_index=id')
+              mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url')
 
 </template>
 

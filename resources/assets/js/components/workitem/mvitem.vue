@@ -14,7 +14,7 @@
 import {mapState} from 'vuex'
 import video_fullplayer from '../video_fullplayer'
 export default {
-  props: ['mv_url'],
+  props: ['mv_url','disable_play'],
   data: function(){
     return {
       tracks: [],
@@ -39,11 +39,13 @@ export default {
   },
   methods: {
     triggerMvPlay(mv){
-      if (mv.type=="youtube"){
-        this.full_video_status=true
-      }
-      if (mv.type=="netease"){
-        window.open(mv.url)
+      if (this.disable_play!==true){
+        if (mv.type=="youtube"){
+          this.full_video_status=true
+        }
+        if (mv.type=="netease"){
+          window.open(mv.url)
+        }
       }
     },
     update_mv (){
