@@ -43,13 +43,14 @@ section.page_works_indep(v-if="work")
             br.visible-xs
             h2 系列曲目
             br
+            
             div(v-if="work.work_url.indexOf('youtube')!=-1")
               iframe(:src='work.embed_url', width='100%', height='350px')
             div(v-else-if="work.work_url.indexOf('music.163')!=-1")
               // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
               a.videoPreview(:href='work.work_url', target='_blank')
-                img(:src='neteasecover', alt='', style='width: 100%')
-                h3 {{neteasetitle}}
+                img(:src='neteasecover?neteasecover:work.cover', alt='', style='width: 100%')
+                h3 {{neteasetitle?neteasetitle:work.title}}
             div(v-else='')
               h4(v-if='(!tracks.length)')
                 img.loadingspin(src='/img/loadingicon.png')
