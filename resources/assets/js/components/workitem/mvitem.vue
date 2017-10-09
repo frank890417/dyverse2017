@@ -5,7 +5,7 @@
     :youtube_url="videodata.url",
     @ended = "full_video_status=false")
 
-  .listMvItem(:style="{'background-image':`url(${videodata.cover})`}"
+  .listMvItem(:style="{'background-image':`url(${mv_cover?mv_cover:videodata.cover})`}"
         @click="triggerMvPlay(videodata)")
   .name {{videodata.name}}
 </template>
@@ -14,7 +14,7 @@
 import {mapState} from 'vuex'
 import video_fullplayer from '../video_fullplayer'
 export default {
-  props: ['mv_url','disable_play'],
+  props: ['mv_url','disable_play','mv_cover'],
   data: function(){
     return {
       tracks: [],
@@ -32,7 +32,7 @@ export default {
   watch: {
     mv_url (){
       this.update_mv();
-    }
+    },
   },
   mounted () {
       this.update_mv();

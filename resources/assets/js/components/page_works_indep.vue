@@ -99,15 +99,18 @@ export default {
               cover: "",
               type: ""
             }
+            
 
             if (typeof mvdata =='string'){
               data.url = mvdata
             }
             if (typeof mvdata == 'object'){
-              if (mvdata.name && mvdata.name != ""){
-                data.name = mvdata.name
+              data = {
+                name: mvdata.name || "",
+                url: mvdata.url || "",
+                cover: mvdata.cover || "",
+                type: mvdata.type || ""
               }
-              data.url = mvdata.url
             }
 
             // if (data.url.indexOf("163")!=-1){
