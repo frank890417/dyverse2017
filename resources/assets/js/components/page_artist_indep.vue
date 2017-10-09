@@ -36,7 +36,7 @@ section.page_artist_indep(v-if='artist')
           h3 相關作品
           .row.slick
             .col-sm-3(v-for='(work,id) in artist.works', @click='work_index=id')
-              mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url')
+              mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url', :mv_url='work.cover', :mv_url='work.name')
 
 </template>
 

@@ -7,14 +7,14 @@
 
   .listMvItem(:style="{'background-image':`url('${mv_cover?mv_cover:videodata.cover}')`}"
         @click="triggerMvPlay(videodata)")
-  .name {{videodata.name}}
+  .name {{mv_name?mv_name:videodata.name}}
 </template>
 
 <script>
 import {mapState} from 'vuex'
 import video_fullplayer from '../video_fullplayer'
 export default {
-  props: ['mv_url','disable_play','mv_cover'],
+  props: ['mv_url','disable_play','mv_cover','mv_name'],
   data: function(){
     return {
       tracks: [],
