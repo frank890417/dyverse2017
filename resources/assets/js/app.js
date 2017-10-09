@@ -59,6 +59,7 @@ if (window.document.domain == "dyverse.studio") {
 
 import App from './components/App';
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import picture_loader from './components/manage/picture_loader'
 Vue.use(VueYouTubeEmbed)
 
 const vm = new Vue({
@@ -69,7 +70,7 @@ const vm = new Vue({
       mvdata: window.mvdata || []
     },
     components: {
-      App
+      App,picture_loader
     },
     mounted(){
         if (this.mvdata){

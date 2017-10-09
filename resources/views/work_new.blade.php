@@ -133,6 +133,7 @@
                             <div class="form-group-inline row">
                                 <label class='col-sm-3' for="網址">網址</label>
                                 <div class="col-sm-9">
+                                    <picture_loader v-model="mvdata[mvid].url"></picture_loader>
                                     <input class='form-control' type="text" v-model="mvdata[mvid].url">
                                 </div> 
                             </div>
@@ -159,7 +160,7 @@
     window.require_js={};
     window.require_js.dropzone=true;
     window.require_js.tinymce=true;
-    window.mvdata = {!! $work->mv !!};
+    window.mvdata = {!! $work->mv?$work->mv:[] !!};
 
     
   </script>
