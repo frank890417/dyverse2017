@@ -160,7 +160,7 @@
     window.require_js={};
     window.require_js.dropzone=true;
     window.require_js.tinymce=true;
-    window.mvdata = {!! $work->mv?$work->mv:[] !!};
+    window.mvdata = {!! $work->mv?$work->mv:"[]" !!};
 
     
   </script>
