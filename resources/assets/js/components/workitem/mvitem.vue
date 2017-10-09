@@ -5,7 +5,7 @@
     :youtube_url="videodata.url",
     @ended = "full_video_status=false")
 
-  .listMvItem(:style="{'background-image':`url(${mv_cover?mv_cover:videodata.cover})`}"
+  .listMvItem(:style="{'background-image':`url('${mv_cover?mv_cover:videodata.cover}')`}"
         @click="triggerMvPlay(videodata)")
   .name {{videodata.name}}
 </template>

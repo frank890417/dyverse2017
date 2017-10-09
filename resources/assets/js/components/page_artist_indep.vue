@@ -34,7 +34,7 @@ section.page_artist_indep(v-if='artist')
             hr
         .col-sm-12
           h3 相關作品
-          .row
+          .row.slick
             .col-sm-3(v-for='(work,id) in artist.works', @click='work_index=id')
               mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url')
 
@@ -44,12 +44,18 @@ section.page_artist_indep(v-if='artist')
 <script>
 import {mapState} from 'vuex'
 import mvitem from './workitem/mvitem'
+import $ from 'jquery'
+import Slick from 'slick-carousel'
 export default {
   data: function() {
       return {
           tracks: null,
-          work_index: 0
+          work_index: 0,
+          paging: 0
       }
+  },
+  mounted(){
+    // $(".slick").slick()
   },
   props: ["wkid"],
   computed: {

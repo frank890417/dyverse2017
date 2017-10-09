@@ -27,7 +27,7 @@
                                 <td>
                                     <ul>
                                     @foreach ($singer->works as $work)
-                                        <li><a href="{{ url('/work/'.($work->id).'/edit') }}">{{$work->title}}</a></li>
+                                        <li><a href="{{ url('/manage/work/'.($work->id).'/edit') }}">{{$work->title}}</a></li>
                                     @endforeach
                                     </ul>
                                 </td>

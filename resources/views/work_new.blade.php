@@ -110,7 +110,7 @@
                 </div>
                 <div class="form-group">
                     <label for="mv">相關影音</label>
-                    <textarea class='form-control' type="hidden" style="display: none;" name="mv" id='content' rows=10 :value="JSON.stringify(mvdata)" type="hidden"></textarea>
+                    <textarea class='form-control' style="display: none" name="mv" id='content' rows=10 :value="JSON.stringify(mvdata)" type="hidden"></textarea>
                     <ul v-if="mvdata" class='list-group'>
                         <li v-for="(mv,mvid) in mvdata" class='list-group-item'>
                             <div class="form-group">
@@ -138,8 +138,11 @@
                             </div>
                             <div class="form-group-inline row">
                                 <label class='col-sm-3' for="封面">封面</label>
+                                <!-- <div class="col-sm-9">
+                                    <input class='form-control' type="text" v-model="mvdata[mvid].cover" >
+                                </div>  -->
                                 <div class="col-sm-9">
-                                    <picture_loader v-model="mvdata[mvid].cover" @input="value => {mvdata[mvid].cover=value}"></picture_loader>
+                                    <picture_loader v-model="mvdata[mvid].cover" @input="value => {mvdata[mvid].cover=value;mvdata.splice(0,0)}"></picture_loader>
                                 </div> 
                             </div>
                         </li>

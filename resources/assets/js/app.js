@@ -97,6 +97,11 @@ const vm = new Vue({
             })
             
         }
+    },
+    methods: {
+        updateAll(){
+            this.$forceUpdate()
+        }
     }
     
 });
