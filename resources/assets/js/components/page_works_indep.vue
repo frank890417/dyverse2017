@@ -49,7 +49,7 @@ section.page_works_indep(v-if="work")
             div(v-else-if="work.work_url.indexOf('music.163')!=-1")
               // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
               a.videoPreview(:href='work.work_url', target='_blank')
-                img(:src='neteasecover?neteasecover:work.cover', alt='', style='width: 100%')
+                img(:src='neteasecover?neteasecover:work.image', alt='', style='width: 100%')
                 h3 {{neteasetitle?neteasetitle:work.title}}
             div(v-else='')
               h4(v-if='(!tracks.length)')
