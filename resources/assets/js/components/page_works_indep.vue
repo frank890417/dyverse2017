@@ -34,7 +34,7 @@ section.page_works_indep(v-if="work")
             
             ul.listMv.row
               li.col-sm-4(v-for="mv in work_mvs" )
-                mvitem(:key="mv.name", :mv_url='mv.url')
+                mvitem(:key="mv.name", :mv_url='mv.url', :mv_cover='mv.cover')
                 //- .item(:style="{'background-image':`url(${mv.cover})`}"
                 //-       @click="triggerMvPlay(mv)")
                 //- .name {{mv.name}}
