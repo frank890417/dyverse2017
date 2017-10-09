@@ -88,13 +88,11 @@ const vm = new Vue({
                 if (typeof d=="string"){
                     return {
                         name: "",
-                        url: d
+                        url: d,
+                        cover: ""
                     }
                 }else{
-                    return {
-                        name: d.name || "",
-                        url: d.url || ""
-                    }
+                    return d 
                 }
             })
             

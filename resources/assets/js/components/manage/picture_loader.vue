@@ -1,6 +1,10 @@
 <template lang="pug">
   .picture_loader
-    input.from-control(v-model="value", placeholder="自動抓取（網易請自訂圖片)")
+    input.from-control(
+      v-model="value", 
+      placeholder="自動抓取（網易請自訂圖片)"
+    )
+    
     .btn.upload 上傳
      
 </template>
@@ -48,7 +52,10 @@ export default {
     let _this = this
     gen_dz(this.$el.querySelector(".btn.upload"),function(evt,res){
       var imgurl=res.replace("/var/www/dyverse2017/public/","http://dyverse.monoame.com/");
-      _this.$emit("input",imgurl)
+      _this.$emit("input",imgurl.trim())
+      Vue.nextTick(()=>{
+        _this.$forceUpdate()
+      });
     });
 
 

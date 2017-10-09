@@ -68,8 +68,12 @@ export default {
         console.log("get ease:"+url);
         axios.post("/api/neteasemv/",{url: url}).then((res)=>{
           // data.neteasemp4=res.data.video
-          this.videodata.cover=res.data.cover
-          this.videodata.name=res.data.title
+          if (!this.videodata.cover){
+            this.videodata.cover=res.data.cover
+          }
+          if (!this.videodata.name){
+            this.videodata.name=res.data.title
+          }
         })
         
       }
@@ -81,11 +85,15 @@ export default {
         let m;
 
         if ((m = regex.exec(str)) !== null) {
-          this.videodata.cover ="https://img.youtube.com/vi/"+m[2]+"/0.jpg"
+          if (!this.videodata.cover){
+            this.videodata.cover ="https://img.youtube.com/vi/"+m[2]+"/0.jpg"
+          }
         
           axios.get("/api/youtubemv/"+m[2]).then((res)=>{
             console.log(res.data.title)
-            this.videodata.name=(this.videodata.name=="")? res.data.title :this.videodata.name
+            if (!this.videodata.name){
+              this.videodata.name=(this.videodata.name=="")? res.data.title :this.videodata.name
+            }
           })
         }
 
