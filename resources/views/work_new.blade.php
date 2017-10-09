@@ -134,7 +134,7 @@
                                 <label class='col-sm-3' for="網址">網址</label>
                                 <div class="col-sm-9">
                                     <picture_loader v-model="mvdata[mvid].url"></picture_loader>
-                                    <input class='form-control' type="text" v-model="mvdata[mvid].url">
+                                    <input class='form-control' type="text" v-model="mvdata[mvid].url" @input="value => {mvdata[mvid].url=value}">
                                 </div> 
                             </div>
                         </li>

@@ -48,11 +48,8 @@ export default {
     let _this = this
     gen_dz(this.$el.querySelector(".btn.upload"),function(evt,res){
       var imgurl=res.replace("/var/www/dyverse2017/public/","http://dyverse.monoame.com/");
-      _this.value=imgurl
+      _this.$emit("input",imgurl)
     });
-
-
-    
 
 
   }
