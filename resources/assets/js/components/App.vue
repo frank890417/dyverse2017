@@ -1,11 +1,11 @@
 <template>
   <div class='allcontent'>
-      <navbar/>
+      <navbar></navbar>
       <div :class='["pages_area"]'>
           <transition name='fade' mode='out-in'>
               <router-view></router-view>
           </transition>
-          <footerpart />
+          <footerpart></footerpart>
       </div>
   </div>
 </template>

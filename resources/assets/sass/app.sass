@@ -112,6 +112,7 @@ nav.navbar
 
   &.at_index
     background-color: transparent
+    border-bottom: solid 1px transparent
     
     .navbar-header
       a
@@ -125,10 +126,16 @@ nav.navbar
         transition-duration: 0.5s
         color: $color_black
 
-      &.active
-        a, a:focus
-          color: $color_white
+      // &.active
+      //   a, a:focus
+      //     color: $color_white
         
+  
+  a.router-link-exact-active.nav-right-item
+    &,&:focus
+      background-color: $color_yellow
+      color: white
+
 
 h1, h2, h3, h4, h5, h6
   font-weight: 600

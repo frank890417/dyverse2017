@@ -27,6 +27,7 @@
     "vuex": "^2.4.0"
   },
   "dependencies": {
+    "slick-carousel": "^1.8.1",
     "vue-youtube-embed": "^2.1.2"
   }
 }
