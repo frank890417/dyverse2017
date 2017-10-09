@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    input(v-model="value")
+  .picture_loader
+    input.from-control(v-model="value")
     .btn.upload 上傳
      
 </template>
@@ -8,9 +8,14 @@
 <script>
 import Dropzone from 'dropzone'
 export default {
+  props: {
+    value: {
+      default: ""
+    }
+  },
   data(){
     return {
-      value: ""
+      // value: ""
     }
   },
   mounted(){
@@ -54,6 +59,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="sass?indentedSyntax">
+.picture_loader
+  display: flex
+.btn
+  width: 100px
+input
+  width: 100%
 </style>
