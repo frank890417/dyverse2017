@@ -1,6 +1,6 @@
 <template lang="pug">
   .picture_loader
-    input.from-control(v-model="value")
+    input.from-control(v-model="value", placeholder="自動抓取（網易請自訂圖片)")
     .btn.upload 上傳
      
 </template>

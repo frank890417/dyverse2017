@@ -133,8 +133,13 @@
                             <div class="form-group-inline row">
                                 <label class='col-sm-3' for="網址">網址</label>
                                 <div class="col-sm-9">
-                                    <picture_loader v-model="mvdata[mvid].url"></picture_loader>
-                                    <input class='form-control' type="text" v-model="mvdata[mvid].url" @input="value => {mvdata[mvid].url=value}">
+                                    <input class='form-control' type="text" v-model="mvdata[mvid].url" >
+                                </div> 
+                            </div>
+                            <div class="form-group-inline row">
+                                <label class='col-sm-3' for="封面">封面</label>
+                                <div class="col-sm-9">
+                                    <picture_loader v-model="mvdata[mvid].cover" @input="value => {mvdata[mvid].cover=value}"></picture_loader>
                                 </div> 
                             </div>
                         </li>
