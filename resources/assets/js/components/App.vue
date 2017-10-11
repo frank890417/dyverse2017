@@ -49,33 +49,36 @@ export default {
         //         // window.sr = ScrollReveal().reveal('h1,h2,h3,h4,h5,h6');
         //     }
         // });
+
+
+        let sort_date=(a,b)=>{
+            var va = a.date.split(' ')[0].replace(/\./g,'');
+            var vb = b.date.split(' ')[0].replace(/\./g,'');
+
+            if (!isNaN(va)){
+                while (va.length<8){ va+="0"}
+            }
+            if (!isNaN(vb)){
+                while (vb.length<8){ vb+="0"}
+            }
+            // console.log(va,vb)
+
+            if (isNaN(va) || isNaN(vb) ){
+                return isNaN(va)?10000:-10000;
+            }else{
+                return parseInt(vb) -parseInt(va);
+            }
+        };
+
         axios.get("/api/singer").then((res)=>{
             vobj.artists = res.data;
         });
         axios.get("/api/work/indep").then((res)=>{
             vobj.works = res.data;
+            vobj.works = vobj.works.sort(sort_date)
         });
         axios.get("/api/work").then((res)=>{
-            vobj.all_works = res.data;
-
-            var sort_date=(a,b)=>{
-                var va = a.date.split(' ')[0].replace(/\./g,'');
-                var vb = b.date.split(' ')[0].replace(/\./g,'');
-
-                if (!isNaN(va)){
-                    while (va.length<8){ va+="0"}
-                }
-                if (!isNaN(vb)){
-                    while (vb.length<8){ vb+="0"}
-                }
-                console.log(va,vb)
-
-                if (isNaN(va) || isNaN(vb) ){
-                    return isNaN(va)?10000:-10000;
-                }else{
-                    return parseInt(vb) -parseInt(va);
-                }
-            };
+            vobj.all_works = res.data;            
             vobj.all_works = vobj.all_works.sort(sort_date)
         });
         axios.get("/api/post").then((res)=>{
