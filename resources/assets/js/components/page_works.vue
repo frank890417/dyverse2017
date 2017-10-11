@@ -30,16 +30,17 @@ export default {
       var sort_date=(a,b)=>{
         // console.group("sort date")
         // console.log(a,b)
-        var va = a.date.split(' ')[0].replace('.','');
-        var vb = b.date.split(' ')[0].replace('.','');
+        var va = a.date.split(' ')[0].replace(/\./g,'');
+        var vb = b.date.split(' ')[0].replace(/\./g,'');
         // console.groupEnd("sort date")
 
         if (!isNaN(va)){
-          while (va.length<7){ va+="0"}
+          while (va.length<8){ va+="0"}
         }
         if (!isNaN(vb)){
-          while (vb.length<7){ vb+="0"}
+          while (vb.length<8){ vb+="0"}
         }
+        console.log(va,vb)
 
         if (isNaN(va) || isNaN(vb) ){
           return isNaN(va)?10000:-10000;

@@ -114,21 +114,23 @@ nav.navbar
   .icon-bar
     background-color: $color_yellow
 
-  &.at_index
-    background-color: transparent
-    border-bottom: solid 1px transparent
-    
-    .navbar-header
-      a
-        color: transparent
-      .navbar-brand a
-        color: transparent 
-    .nav.navbar-nav a
-      color: $color_white
-    li
-      a
-        transition-duration: 0.5s
-        color: $color_black
+  @media screen and (min-width: 768px)
+
+    &.at_index
+      background-color: transparent
+      border-bottom: solid 1px transparent
+      
+      .navbar-header
+        a
+          color: $color_white 
+        .navbar-brand a
+          color: transparent 
+      .nav.navbar-nav a
+        color: $color_white
+      li
+        a
+          transition-duration: 0.5s
+          color: $color_black
 
       // &.active
       //   a, a:focus
