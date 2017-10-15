@@ -13,25 +13,23 @@ section.page_works_indep(v-if="work")
       .col-md-4.col-xs-12
         .work_indep_img(:style='css_img(work.image)')
           h3.nametag {{work.title}}
-        div.part_credit(v-if="work.credit && work.credit!=''")
-          h4 Contributer
+        //桌面版credit
+        .part_credit.hidden-xs(v-if="work.credit && work.credit!=''")
+          h4 Credits
           p(v-html="getNewlineBr(work.credit)")
-      .col-sm-12.col-md-8
+      .col-xs-12.col-md-8
         .row
           .col-sm-8.col-md-12
             .work_content_header
-              br.visible-xs
               h4.work_work {{work.work}}
               h1 
-                br.visible-xs
                 | {{work.title}}
               h4
                 a.company(:href='work.company_url', target='_blank') {{work.company}}
                 |    |   {{work.date}}
             p.discription(v-html='work.discription')
-          .col-sm-4.col-md-12(v-if="work.mv && work.mv.length>0")
+          .col-sm-4.col-md-12(v-if="work_mvs && work_mvs.length>0")
             h2 相關影音
-            
             ul.listMv.row
               li.col-sm-4(v-for="mv in work_mvs" )
                 mvitem(:key="mv.name", :mv_url='mv.url', :mv_cover='mv.cover', :mv_name='mv.name')
@@ -61,6 +59,10 @@ section.page_works_indep(v-if="work")
                   audio#now_playing.work_indep_player(controls='controls', controlslist='nodownload')
                     source#nowsource(type='audio/mp3', :src='"https://api.soundcloud.com/tracks/"+t.id+"/stream?secret_token=tracks&client_id=5dc224d1ef12f77e0c85f88d1b3b579d"')
 
+          //手機版credit
+          .col-sm-12.part_credit.visible-xs(v-if="work.credit && work.credit!=''")
+            h4 Credits
+            p(v-html="getNewlineBr(work.credit)")
 </template>
 
 <script>

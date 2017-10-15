@@ -630,14 +630,19 @@ section.page_index
         transform:  translate(-50%,-50%) scale(1.2)
 
 .work_indep_img
-  min-height: 400px
+  min-height: 350px
   background-color: $color_black
   background-size: cover
   background-position: center center
   border-bottom: solid 10px $color_yellow
   position: relative
+
   @media screen and (min-width: 768px)
     height: 100%
+
+  @media screen and (max-width: 768px)
+    margin-left: -15px
+    margin-right: -15px
 
 
 .blog_indep_img
@@ -663,10 +668,12 @@ section.page_index
     content: ""
     display: block
     +size(10px,10px)
-    margin-bottom: 15px
+    margin-bottom: 25px
     background-color: $color_yellow
     border: solid 1px $color_yellow
     animation: gold_scale 1.2s both
+    @media screen and (max-width: 768px)
+      display: none
 
 @keyframes gold_scale
   0%
