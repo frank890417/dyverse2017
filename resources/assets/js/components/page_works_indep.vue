@@ -93,7 +93,11 @@ export default {
     },
     work_mvs(){
       if (this.work){
+        if (!this.work.mv){
+          return []
+        }
         let original_data = JSON.parse(this.work.mv)
+        
         let result = original_data.map(mvdata=>{
 
             let data = {
