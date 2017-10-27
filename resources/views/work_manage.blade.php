@@ -16,7 +16,6 @@
                         <th>演出者</th>
                         <th>編輯</th>
                         <th>刪除</th>
-
                     </thead>
                     <tbody>
                         @foreach ($works as $work)
