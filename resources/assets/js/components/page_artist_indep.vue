@@ -35,13 +35,15 @@ section.page_artist_indep(v-if='artist')
         .col-sm-12
           h3 相關作品
           .row.slick
-            .col-sm-3(v-for='(work,id) in artist.works', @click='work_index=id')
+            //- slick(ref="slick" :options="slickOptions")
+            .col-sm-4(v-for='(work,id) in artist.works', @click='work_index=id')
               mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url', :mv_cover='work.cover', :mv_name='work.name')
 
 </template>
 
 
 <script>
+import Slick from 'vue-slick'
 import {mapState} from 'vuex'
 import mvitem from './workitem/mvitem'
 import $ from 'jquery'
@@ -51,7 +53,10 @@ export default {
       return {
           tracks: null,
           work_index: 0,
-          paging: 0
+          paging: 0,
+          slickOptions: {
+              slidesToShow: 3,  
+          }
       }
   },
   mounted(){
@@ -65,7 +70,7 @@ export default {
     }
   },
   components: {
-    mvitem
+    mvitem, Slick
   }
 }
 </script>
