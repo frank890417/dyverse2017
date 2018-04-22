@@ -37,7 +37,11 @@ section.page_artist_indep(v-if='artist')
           .row.slick
             //- slick(ref="slick" :options="slickOptions")
             .col-sm-4(v-for='(work,id) in artist.works', @click='work_index=id')
-              mvitem(:disable_play='true',:key="work.name", :mv_url='work.work_url', :mv_cover='work.cover', :mv_name='work.name')
+              mvitem(:disable_play='true',
+                      :key="work.title", 
+                      :mv_url='work.work_url', 
+                      :mv_cover='work.cover', 
+                      :mv_name='work.title')
 
 </template>
 

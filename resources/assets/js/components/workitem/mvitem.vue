@@ -7,7 +7,7 @@
 
   .listMvItem(:style="{'background-image':`url('${mv_cover?mv_cover:videodata.cover}')`}"
         @click="triggerMvPlay(videodata)")
-  .name {{mv_name?mv_name:videodata.name}}
+  .name {{ videodata.name || mv_name}}
 </template>
 
 <script>
