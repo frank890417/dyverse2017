@@ -6,7 +6,7 @@
           <h1>聯繫資訊</h1>
         </div>
         <div class='col-sm-6'>
-          <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.987844566249!2d121.4493023150089!3d25.169888283908893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442affa01ad75b1%3A0x62d2a67f2ff2f019!2zMjUx5paw5YyX5biC5reh5rC05Y2A6YSn5YWs6LevMjfomZ8!5e0!3m2!1szh-TW!2stw!4v1479756526186' width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.247362205905!2d121.50896211533316!3d24.991709346138762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468034ff7e7cd05%3A0x55ee52e1e6342e5!2zMjM15paw5YyX5biC5Lit5ZKM5Y2A5pmv5paw6KGXMjk45be3N-iZnzU!5e0!3m2!1szh-TW!2stw!4v1527057442267"  width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
         </div>
         <div class='col-sm-6'>
           <h4>Dyverse Studio</h4><br>
