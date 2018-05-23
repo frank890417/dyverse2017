@@ -10,11 +10,12 @@
         </div>
         <div class='col-sm-6'>
           <h4>Dyverse Studio</h4><br>
-          <h4>地址: 251新北市淡水區鄧公路27號</h4>
+          <h4>地址: 235新北市中和區景新街298巷7弄8號5樓</h4>
           <h4>MAIL: dyverse.studio@gmail.com</h4>
-          <h4>電話: (02) 2623-4124 </h4>
+          <h4>電話: (02) 2943-9020 </h4>
           <h4>聯繫時間: 10:00-18:00 </h4>
         </div>
+
       </div>
       <div class='row'>
         <div class='col-sm-12'>

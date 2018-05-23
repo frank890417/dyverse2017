@@ -16,7 +16,11 @@
                 </div>
                 <div class='contact_info_group'> 
                 <div class='goldtext'> TELE-</div>
-                <div class='infotext'>(02) 2623-4124</div>
+                <div class='infotext'>(02) 2943-9020</div>
+                </div>
+                <div class='contact_info_group'> 
+                <div class='goldtext'> ADDRESS-</div>
+                <div class='infotext'>235新北市中和區景新街298巷7弄8號5樓</div>
                 </div>
                 <div class='contact_info_group'> 
                 <div class='goldtext'> MAIL-</div>
