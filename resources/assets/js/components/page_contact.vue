@@ -6,7 +6,7 @@
           <h1>聯繫資訊</h1>
         </div>
         <div class='col-sm-6'>
-          <iframe src="http://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=235新北市中和區景新街298巷7弄8號5樓&output=embed&t=地圖模式"  width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
+          <iframe src="http://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=新北市中和區景新街298巷7弄8號5樓&output=embed&t=地圖模式"  width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
         </div>
         <div class='col-sm-6'>
           <h4>Dyverse Studio</h4><br>
