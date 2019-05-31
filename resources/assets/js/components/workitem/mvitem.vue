@@ -43,7 +43,7 @@ export default {
     get_bilibili_url(url){
       console.log(url)
       var paragraph = url;
-      var regex = /video\/av(.*?)\//;
+      var regex = /video\/av(.{8})/;
       var found = paragraph.match(regex)[1];
       return "https://player.bilibili.com/player.html?aid="+found
 

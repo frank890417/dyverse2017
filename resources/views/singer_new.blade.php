@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <ol class="breadcrumb">
             <li>
-                <a href="{{ url('singer') }}">創作者管理</a>
+                <a href="{{ url('/manage/singer') }}">創作者管理</a>
             </li>
            <!--  <li>
                 <a href="#">Link</a>

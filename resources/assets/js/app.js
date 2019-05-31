@@ -71,6 +71,18 @@ import VueYouTubeEmbed from 'vue-youtube-embed'
 import picture_loader from './components/manage/picture_loader'
 Vue.use(VueYouTubeEmbed)
 
+Vue.mixin({
+  methods: {
+    get_bilibili_url(url){
+      console.log(url)
+      var paragraph = url;
+      var regex = /video\/av(.{8})/;
+      var found = paragraph.match(regex)[1];
+      return "https://player.bilibili.com/player.html?aid="+found
+
+    }
+  }
+})
 const vm = new Vue({
     el: "#app",
     router,

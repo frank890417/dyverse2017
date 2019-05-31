@@ -171,14 +171,7 @@ export default {
       this.update_tracks();
   },
   methods: {
-    get_bilibili_url(url){
-      console.log(url)
-      var paragraph = url;
-      var regex = /video\/av(.*?)\//;
-      var found = paragraph.match(regex)[1];
-      return "https://player.bilibili.com/player.html?aid="+found
-
-    },
+    
     triggerMvPlay(mv){
       if (mv.type=="youtube"){
         this.youtube_url = mv.url
@@ -187,6 +180,10 @@ export default {
       if (mv.type=="netease"){
         window.open(mv.url)
       }
+       if (mv.type=="bilibili"){
+          this.full_video_status=true
+          //- window.open(mv.url)
+        }
     },
       getNewlineBr(text){
         if (text){

@@ -108,7 +108,7 @@ class ApiController extends Controller
         $url = $request->input('url');
 
 
-        $re = '/video\/av(.*?)\//m';
+        $re = '/video\/av(.{8})/m';
         $str = $url;
 
         preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
