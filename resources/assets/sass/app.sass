@@ -502,18 +502,17 @@ section.page_index
   li
     list-style: none
 
-
-
 .listMvItem
   list-style: none
-  height: 150px
+  min-height: 180px
   background-size: cover
   background-position: center center
   cursor: pointer
   position: relative
 
-  .name
-    min-height: 90px
+  & + .name
+    min-height: 120px
+    margin-top: 10px
 
   &:hover
     &:after
