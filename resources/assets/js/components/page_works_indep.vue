@@ -42,7 +42,7 @@ section.page_works_indep(v-if="work")
             h2 系列曲目
             br
             div(v-if="work.work_url.indexOf('bilibili')!=-1")
-              h3 {{get_bilibili_url(work.work_url)}}
+              //- h3 {{get_bilibili_url(work.work_url)}}
               iframe(:src='get_bilibili_url(work.work_url)', width='100%', height='400px')
             div(v-else-if="work.work_url.indexOf('youtube')!=-1")
               iframe(:src='work.embed_url', width='100%', height='400px')
