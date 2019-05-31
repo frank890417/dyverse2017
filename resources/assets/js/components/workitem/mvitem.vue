@@ -97,14 +97,14 @@ export default {
         
         let url = this.videodata.url
         console.log("get bilibili:"+url);
-        axios.post("/api/getbilibilimv/",{url: url}).then((res)=>{
+        axios.get("/api/getbilibilimv/",{url: url,params: {url:url}}).then((res)=>{
           // data.neteasemp4=res.data.video
           //- if (!this.videodata.cover){
              this.$set(this.videodata,'cover',res.data.cover)
           //- }
           if (!this.videodata.name){
             this.videodata.name=res.data.title
-          }
+          }                                                                                                                                                                                                                                          
         })
         
       }

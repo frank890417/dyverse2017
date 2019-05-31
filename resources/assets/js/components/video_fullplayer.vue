@@ -2,7 +2,7 @@
 .video_container(:class="{active: section_playing}")
   .mask(@click="ended")
   transition(name="fade")
-    div
+    div(style='max-width: 800px;width: 100%;')
       youtube.front(
       :video-id="youtube_id", 
       :player-width="player_width", 
@@ -10,7 +10,7 @@
       :player-vars="{start: 0,autoplay: 1,rel: 0}",
       v-if="section_playing && youtube_url.indexOf('bilibili')==-1",
       @ended = "ended")
-      iframe(:src="get_embed_url(youtube_url)", v-else,width='600', height='400', frameborder='0', allowfullscreen='')
+      iframe(:src="get_embed_url(youtube_url)", v-else,style="width: 100%", height='450', frameborder='0', allowfullscreen='')
   // video_youtube
   .btn_video_close(@click="ended") ✕
 </template>
