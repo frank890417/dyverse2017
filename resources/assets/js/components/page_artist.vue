@@ -3,7 +3,7 @@
     <div class='container'>
       <div class='row'>
         <div class=col-sm-12>
-          <h1>合作演出者</h1>
+          <h1>旗下藝人</h1>
         </div>
       </div>
       <div class='row' v-if='artists'>

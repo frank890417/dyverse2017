@@ -3,7 +3,7 @@ section.page_artist_indep(v-if='artist')
   .container
     ol.breadcrumb
       li.breadcrumb-item
-        router-link(to='/artist') 合作演出者
+        router-link(to='/artist') 旗下藝人
       li.breadcrumb-item.active {{artist.name}}
     .row.row_work_indep.row_artist
       .col-sm-3.col_artist_info
