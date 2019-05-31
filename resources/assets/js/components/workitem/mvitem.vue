@@ -4,6 +4,7 @@
     :status="full_video_status", 
     :youtube_url="videodata.url",
     @ended = "full_video_status=false")
+  //- iframe(:src="get_bilibili_url(videodata.url)")
 
   .listMvItem(:style="{'background-image':`url('${mv_cover?mv_cover:videodata.cover}')`}"
         @click="triggerMvPlay(videodata)")
@@ -38,6 +39,15 @@ export default {
       this.update_mv();
   },
   methods: {
+    
+    get_bilibili_url(url){
+      console.log(url)
+      var paragraph = url;
+      var regex = /video\/av(.*?)\//;
+      var found = paragraph.match(regex)[1];
+      return "https://player.bilibili.com/player.html?aid="+found
+
+    },
     triggerMvPlay(mv){
       if (this.disable_play!==true){
         if (mv.type=="youtube"){
@@ -45,6 +55,10 @@ export default {
         }
         if (mv.type=="netease"){
           window.open(mv.url)
+        }
+        if (mv.type=="bilibili"){
+          this.full_video_status=true
+          //- window.open(mv.url)
         }
       }
     },
@@ -69,8 +83,25 @@ export default {
         axios.post("/api/neteasemv/",{url: url}).then((res)=>{
           // data.neteasemp4=res.data.video
           if (!this.videodata.cover){
-            this.videodata.cover=res.data.cover
+            this.$set(this.videodata,'cover',res.data.cover)
           }
+          if (!this.videodata.name){
+            this.videodata.name=res.data.title
+          }
+        })
+        
+      }
+
+      if (this.videodata.url.indexOf("bilibili")!=-1){
+        this.videodata.type="bilibili"
+        
+        let url = this.videodata.url
+        console.log("get bilibili:"+url);
+        axios.post("/api/getbilibilimv/",{url: url}).then((res)=>{
+          // data.neteasemp4=res.data.video
+          //- if (!this.videodata.cover){
+             this.$set(this.videodata,'cover',res.data.cover)
+          //- }
           if (!this.videodata.name){
             this.videodata.name=res.data.title
           }

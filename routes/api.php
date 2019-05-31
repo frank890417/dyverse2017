@@ -27,4 +27,6 @@ Route::group(['middleware'=>['cors']] , function(){
 
 Route::post("neteasemv","ApiController@get_netease_mv");
 Route::get("neteasemv","ApiController@get_netease_mv");
+Route::post("getbilibilimv","ApiController@get_bilibili_mv");
+// Route::get("getbilibilimv","ApiController@get_bilibili_mv");
 Route::get("youtubemv/{id}","ApiController@get_youtube_info");

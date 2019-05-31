@@ -41,11 +41,13 @@ section.page_works_indep(v-if="work")
             br.visible-xs
             h2 系列曲目
             br
-            
-            div(v-if="work.work_url.indexOf('youtube')!=-1")
-              iframe(:src='work.embed_url', width='100%', height='350px')
+            div(v-if="work.work_url.indexOf('bilibili')!=-1")
+              h3 {{get_bilibili_url(work.work_url)}}
+              iframe(:src='get_bilibili_url(work.work_url)', width='100%', height='400px')
+            div(v-else-if="work.work_url.indexOf('youtube')!=-1")
+              iframe(:src='work.embed_url', width='100%', height='400px')
             div(v-else-if="work.work_url.indexOf('music.163')!=-1")
-              // <iframe :src='neteasemp4' width='100%' height='450px'></iframe>
+              // <iframe :src='neteasemp4' width='100%' height='400px'></iframe>
               a.videoPreview(:href='work.work_url', target='_blank')
                 img(:src='neteasecover?neteasecover:work.image', alt='', style='width: 100%')
                 h3 {{neteasetitle?neteasetitle:work.title}}
@@ -169,6 +171,14 @@ export default {
       this.update_tracks();
   },
   methods: {
+    get_bilibili_url(url){
+      console.log(url)
+      var paragraph = url;
+      var regex = /video\/av(.*?)\//;
+      var found = paragraph.match(regex)[1];
+      return "https://player.bilibili.com/player.html?aid="+found
+
+    },
     triggerMvPlay(mv){
       if (mv.type=="youtube"){
         this.youtube_url = mv.url
@@ -220,15 +230,34 @@ export default {
             });
 
           }
-          if (this.work.work_url.indexOf('music.163')!=-1){
-            let url = this.work.work_url
-            console.log("get ease:"+url);
-            axios.post("/api/neteasemv/",{url: url}).then((res)=>{
-              this.neteasemp4=res.data.video
-              this.neteasecover=res.data.cover
-              this.neteasetitle=res.data.title
-            })
-          }
+          //- if (this.work.work_url.indexOf('music.163')!=-1){
+          //-   let url = this.work.work_url
+          //-   console.log("get ease:"+url);
+          //-   axios.post("/api/neteasemv/",{url: url}).then((res)=>{
+          //-     this.neteasemp4=res.data.video
+          //-     this.neteasecover=res.data.cover
+          //-     this.neteasetitle=res.data.title
+          //-   })
+          //- }
+
+
+          //- if (this.work.work_url.indexOf("bilibili")!=-1){
+          //-   this.videodata.type="bilibili"
+            
+          //-   let url = this.work.work_url
+          //-   console.log("get bilibili:"+url);
+          //-   axios.post("/api/getbilibilimv/",{url: url}).then((res)=>{
+          //-     // data.neteasemp4=res.data.video
+          //-     //- if (!this.videodata.cover){
+          //-       this.$set(this.videodata,'cover',res.data.cover)
+          //-     //- }
+          //-     if (!this.videodata.name){
+          //-       this.videodata.name=res.data.title
+          //-     }
+          //-   })
+            
+          //- }
+
         }
         
       }

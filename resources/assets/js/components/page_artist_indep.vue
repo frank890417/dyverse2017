@@ -27,7 +27,7 @@ section.page_artist_indep(v-if='artist')
               br.visible-xs
               h1 {{artist.works[work_index].title}}
             br.visible-xs
-            iframe(width='100%', height='400', :src='artist.works[work_index].embed_url', frameborder='0', allowfullscreen='')
+            iframe(width='100%', height='400', :src='get_embed_url(artist.works[work_index].embed_url || artist.works[work_index].work_url)', frameborder='0', allowfullscreen='')
             br
             br
             p(v-html='artist.works[work_index].discription')
@@ -75,6 +75,21 @@ export default {
   },
   components: {
     mvitem, Slick
+  },
+  methods: {
+
+    get_embed_url(url){
+      // console.log(url)
+      if (url.indexOf("bilibili")!=-1){
+
+        var paragraph = url;
+        var regex = /video\/av(.*?)\//;
+        var found = paragraph.match(regex)[1];
+        return "https://player.bilibili.com/player.html?aid="+found
+      }
+      return url
+
+    },
   }
 }
 </script>

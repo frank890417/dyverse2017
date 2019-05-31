@@ -100,4 +100,58 @@ class ApiController extends Controller
         ];
 
     }
+
+
+    public function get_bilibili_mv(Request $request){
+
+       
+        $url = $request->input('url');
+
+
+        $re = '/video\/av(.*?)\//m';
+        $str = $url;
+
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+
+        // $url = str_replace("/m/","/",$url);
+        $video_id = $matches[0][1];
+        $api_url = "https://api.bilibili.com/x/web-interface/view?aid=".$video_id;
+        $api_result = json_decode(file_get_contents($api_url ),true );
+        $cover_url = $api_result['data']['pic'];
+        file_get_contents($cover_url);
+        $base64data = base64_encode(file_get_contents($cover_url));
+        return [
+            "title" =>  $api_result['data']['title'],
+            'cover' =>  "data:image/png;base64, ".$base64data,
+            'video' => "https://player.bilibili.com/player.html?aid=".$video_id
+        ];
+        // dd($api_result);
+    }
+
+
+    // public function transfer_bilibili_image(Request $request){
+
+    //     $url = $request->input('url');
+
+
+    //     $re = '/video\/av(.*?)\//m';
+    //     $str = $url;
+
+    //     preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+
+    //     // $url = str_replace("/m/","/",$url);
+    //     $video_id = $matches[0][1];
+    //     $api_url = "https://api.bilibili.com/x/web-interface/view?aid=".$video_id;
+    //     $api_result = json_decode(file_get_contents($api_url ),true );
+    //     $cover_url = $api_result['data']['pic'];
+    //     return "hi";
+    //     file_get_contents($cover_url);
+    //     dd(file_get_contents($cover_url));
+    //     // return [
+    //     //     "title" =>  $api_result['data']['title'],
+    //     //     'cover' =>  $cover_url,
+    //     //     'video' => "https://player.bilibili.com/player.html?aid=".$video_id
+    //     // ];
+    //     // dd($api_result);
+    // }
 }

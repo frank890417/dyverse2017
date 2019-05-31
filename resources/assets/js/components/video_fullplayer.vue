@@ -2,13 +2,15 @@
 .video_container(:class="{active: section_playing}")
   .mask(@click="ended")
   transition(name="fade")
-    youtube.front(
-    :video-id="youtube_id", 
-    :player-width="player_width", 
-    :player-height="player_height",
-    :player-vars="{start: 0,autoplay: 1,rel: 0}",
-    v-if="section_playing",
-    @ended = "ended")
+    div
+      youtube.front(
+      :video-id="youtube_id", 
+      :player-width="player_width", 
+      :player-height="player_height",
+      :player-vars="{start: 0,autoplay: 1,rel: 0}",
+      v-if="section_playing && youtube_url.indexOf('bilibili')==-1",
+      @ended = "ended")
+      iframe(:src="get_embed_url(youtube_url)", v-else,width='600', height='400', frameborder='0', allowfullscreen='')
   // video_youtube
   .btn_video_close(@click="ended") ✕
 </template>
@@ -46,6 +48,19 @@ export default {
     }
   },
   methods: {
+    
+    get_embed_url(url){
+      // console.log(url)
+      if (url.indexOf("bilibili")!=-1){
+
+        var paragraph = url;
+        var regex = /video\/av(.*?)\//;
+        var found = paragraph.match(regex)[1];
+        return "https://player.bilibili.com/player.html?aid="+found
+      }
+      return url
+
+    },
     ended(){
       this.$emit("ended")
     }
