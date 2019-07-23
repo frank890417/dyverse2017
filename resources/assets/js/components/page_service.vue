@@ -50,27 +50,34 @@ export default {
         },{
           name: "Hsin 欣",
           job: "Songwriter、Guitarist",
-          description: `東京音樂專門學校畢業。
-2016年創立歧響音樂，2019年擴編為團隊經營。
-擅長音樂風格：Band sound，民族音樂，交響編制，實驗音樂。
-興趣：咖啡、酒、天文、遊戲。`,
+          description: ``,
           img: "/img/members/Hsin.jpg"
         },{
           name: "Hiroshi",
           job: "Producer",
-          description: `東京音樂專門學校畢業。
-2016年創立歧響音樂，2019年擴編為團隊經營。
-擅長音樂風格：Band sound，民族音樂，交響編制，實驗音樂。
-興趣：咖啡、酒、天文、遊戲。`,
+          description: ``,
           img: "/img/members/Hiroshi.jpg"
         },{
           name: "Waiting@H&&D",
           job: "Songwriter、Producer",
           description: `東京音樂專門學校畢業。
-2016年創立歧響音樂，2019年擴編為團隊經營。
-擅長音樂風格：Band sound，民族音樂，交響編制，實驗音樂。
-興趣：咖啡、酒、天文、遊戲。`,
+目標是成為對抗不公不義的創作型歌手。
+專長：作詞、作曲、編曲、遊戲配樂。喜好日系風格，但寫作上並不設限。
+興趣：動漫畫、遊戲、鋼普拉、電影。`,
           img: "/img/members/Waiting.jpg"
+        },{
+          name: "陳雨農",
+          job: "A&R",
+          description: ``,
+          img: ""
+        },{
+          name: "tetsuyanao",
+          job: "Songwriter, Bassist",
+          description: `東京音樂專門學校涉谷校畢業
+2014年回國後從事作編曲,貝斯教學, 錄音及現場演奏
+擅長音樂風格: 動漫風格
+興趣：音樂、酒、動畫、遊戲。`,
+          img: ""
         }
       ]
     }
