@@ -49,7 +49,7 @@ html, body
   // +size(100%,100%)
   background-color: $color_white
   color: $color_brown
-  font-size: 15px
+  font-size: 14px
   // overflow: hidden
   height: 100vh
   box-sizing: border-box
@@ -150,26 +150,29 @@ h1, h2, h3, h4, h5, h6,p
   letter-spacing: 1px
 
 h1
-  font-size: 1.5em
+  font-size: 1.5rem
 
 h2
-  font-size: 1.4em
+  font-size: 1.4rem
 
 h3
-  font-size: 1.2em
+  font-size: 1.2rem
 
 h4
-  font-size: 1em
+  font-size: 1rem
 
 h5
-  font-size: 0.7em
-  line-height: 1.5em
+  font-size: 0.7rem
+  line-height: 1.5rem
 
 h6
-  font-size: 0.5em
+  font-size: 0.5rem
 
 p
+  font-size: 1rem
   text-align: justify
+  letter-spacing: 0.1
+  line-height: 2
 
 [class^="page_"]
   min-height: 70vh
@@ -261,7 +264,127 @@ section.page_index
 .page_service
   img
     width: 120px
+    // background-color: $color_yellow
+  section
+    padding-top: 40px
+    padding-bottom: 40px
+  .section_intro
+    background-color: $color_black
+    color: white
+    padding-top: 50px
+    
+    @keyframes rot
+      0%
+        transform: rotate(0deg)
+      100%
+        transform: rotate(360deg)
+    
+    .cd
+      width: 100%
+      margin-bottom: -400px
+      animation: rot 30s infinite
+
+
+    h4
+      color: $color_yellow
+  .section_service
+    background-color: $color_black
+    color: white
+    .row_service
+      background-color: $color_black
+      position: relative
+      z-index: 5
+      border: solid 4px $color_yellow
+      border-radius: 20px
+      box-shadow: 0px 0px 20px rgba(black,0.3)
+      display: flex
+      justify-content: center
+      align-items: flex-start
+      margin: 2vw
+      padding: 10px
+      padding-bottom: 0
+    .servicebox
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      flex-direction: column
+      h5
+        font-weight: 400
+        font-size: 14px
+        margin-bottom: 0
+        color: $color_yellow
+      h3
+        margin-top: 10px
+        font-size: 24px
+      p
+        line-height: 2
+
+    h3
+      color: $color_yellow
+  .section_member
+    .col-sm-2
+      border-right: solid 1px $color_yellow
+      height: 80vh
+    .col-sm-10
+      padding: 0px 30px
+    .col-member
+      padding: 0px 30px
+    .photo
+      width: 200px
+      height: 200px
+      border-radius: 8px
+      background-color: #eee
+      position: relative
+      margin-bottom: 20px
+      background-size: cover
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        left: -8px
+        bottom: -8px
+        width: 40px
+        height: 40px
+
+        border-radius: 0 100% 0 10px
+        background-color: $color_yellow
+        z-index: 100
+        transition: 0.5s
+      &:hover
+        &:after
+          width: 50px
+          height: 50px
+
+    h2
+      font-size: 24px
+      margin-top: 10px
+    h2,h4
+      color: $color_yellow
+    h4
+      margin-bottom: 0px
+      font-weight: 500
+
+    p
+      margin-bottom: 30px
+      line-height: 2
+      color: #333
+  h1
+    color: $color_yellow
+    vertical-align: bottom
+    font-size: 60px
+    font-weight: 500
+    span
+      color: $color_yellow
+      vertical-align: baseline
+      margin-left: 10px
+      font-size: 0.5em
+
+  .section_decor
+    background-image: url(/img/intro_decor.png)
     background-color: $color_yellow
+    min-height: 400px
+    background-repeat: no-repeat
+
 
   // background-color: $color_white
 

@@ -7,23 +7,27 @@ const store = new Vuex.Store({
       about: {},
       services: [
         {
+          "eng": "Production",
           "title":"音樂製作",
-          "description":"原創音樂，Demo 製作，廣告、影視與遊戲配樂，編曲與樂曲重製",
+          "description":"團隊成員皆為日本留學歸國的音樂人，擅長帶有日系色彩的風格，在流行歌曲、偶像歌曲、動畫配樂、遊戲配樂等各方面，都累積了相當豐富的製作經驗。",
           "img": "/img/service_1.svg"
         },
         {
+          "eng": "Sound FX",
           "title":"音效製作",
-          "description":"LOGO 與企業形象音效，廣告、影視與遊戲音效，網站特效音，手機鈴聲",
+          "description":"環境音、場景音、效果音，透過縝密的設計，加上精確的配置，提升視覺畫面的臨場感，如臨其境的體驗將更加撼動人心。",
           "img": "/img/service_2.svg"
         },
         {
+          "eng": "Recording & Mixing",
           "title":"混音後製",
-          "description":"歌手與樂手錄音，旁白錄製，音樂會現場錄音，後製編輯，混音與母帶處理",
+          "description":"提供專業的錄音及配唱指導。以職人的堅持完成各項細節後製，力求完美。",
           "img": "/img/service_3.svg"
         },
         {
-          "title":"數位製譜",
-          "description":"樂譜電子檔製作，流行音樂、樂團譜製作，現代音樂、室內樂、交響樂總譜與分譜打印",
+          "eng": "Publishing",
+          "title":"數位出版",
+          "description":"協助客戶將成品上架至各大音樂串流平台，並且提供相關細節的諮詢。",
           "img": "/img/service_4.svg"
         }
       ],
