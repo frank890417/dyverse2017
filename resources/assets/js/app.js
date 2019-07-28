@@ -19,6 +19,8 @@ import {mapState} from 'vuex'
 import "./sdk-3.1.2.js"
 
 
+import softscroll from 'monoame-softscroll'
+softscroll.init()
 
 var website_data = {};
 var api_url = "http://dyverse.studio/api/command.php";
