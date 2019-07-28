@@ -48,16 +48,6 @@ export default {
 興趣：咖啡、酒、天文、遊戲。`,
           img: "/img/members/Eric.jpg"
         },{
-          name: "Hsin 欣",
-          job: "Songwriter、Guitarist",
-          description: ``,
-          img: "/img/members/Hsin.jpg"
-        },{
-          name: "Hiroshi",
-          job: "Producer",
-          description: ``,
-          img: "/img/members/Hiroshi.jpg"
-        },{
           name: "Waiting@H&&D",
           job: "Songwriter、Producer",
           description: `東京音樂專門學校畢業。
@@ -66,16 +56,33 @@ export default {
 興趣：動漫畫、遊戲、鋼普拉、電影。`,
           img: "/img/members/Waiting.jpg"
         },{
+          name: "Hsin 欣",
+          job: "Songwriter、Guitarist",
+          description: `大阪音樂專門學校畢業。
+2015年回國後從事樂團演出、詞曲創作。
+擅長音樂風格：流行音樂、搖滾樂。
+興趣：PS4、漫畫、旅遊。
+`,
+          img: "/img/members/Hsin.jpg"
+        },{
+          name: "Hiroshi",
+          job: "Producer",
+          description: ``,
+          img: "/img/members/Hiroshi.jpg"
+        },{
           name: "陳雨農",
           job: "A&R",
-          description: ``,
-          img: ""
+          description: `文化大學音樂系畢業。
+後投入錄音室工作擔任錄音、剪輯、後製及企劃工作多年。目前以歌手培訓為主。
+擅長音樂風格：動漫音樂、日系偶像、抒情。
+興趣：女僕、偶像、拉麵。`,
+          img: "/img/members/RFC.jpg"
         },{
           name: "tetsuyanao",
           job: "Songwriter, Bassist",
-          description: `東京音樂專門學校涉谷校畢業
-2014年回國後從事作編曲,貝斯教學, 錄音及現場演奏
-擅長音樂風格: 動漫風格
+          description: `東京音樂專門學校涉谷校畢業。
+2014年回國後從事作編曲、貝斯教學、錄音及現場演奏。
+擅長音樂風格：動漫風格
 興趣：音樂、酒、動畫、遊戲。`,
           img: ""
         }
@@ -83,7 +90,15 @@ export default {
     }
   },
   mounted(){
-    this.members.forEach(member=>member.description.replace(/\n/g,'<br>'))
+    this.members.forEach(member=>{
+      member.description = 
+        member.description.replace(/\n/g,'<br>\n').replace(/\:/g,'：')
+                          .replace(/\,/g,'，')
+                          .replace(/\./g,'。')
+                          .replace(/\n(.*?：)/g,"\n<b>$1</b>")
+                          // .replace("擅長音樂風格：",'<b>擅長音樂風格：</b>')
+                          // .replace("興趣：",'<b>興趣：</b>')
+    })
   },
     computed:  {
         ...mapState(['services'])
