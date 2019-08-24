@@ -15,6 +15,7 @@
                             <th>粉專連結</th>
                             <th style="width: 300px">作品列表</th>
                             <th style="width: 300px">介紹</th>
+                            <th style="width: 50px">顯示</th>
                             <th>編輯</th>
                             <th>刪除</th>
                         </thead>
@@ -32,6 +33,8 @@
                                     </ul>
                                 </td>
                                 <td>{!!$singer->description!!}</td>
+
+                                <td> {{ $singer->show==1 ? "✔️":''  }}</td>
                                 <td><a class='btn btn-default' href="/manage/singer/{{$singer->id}}/edit">編輯</a></td>
                                 <td>
                                   <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$singer->id}}").submit();}'>刪除</button>
@@ -51,5 +54,6 @@
         </div>
     </div>
    
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
 @endsection

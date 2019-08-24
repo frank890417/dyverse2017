@@ -14,6 +14,7 @@
                         <th>客戶</th>
                         <th>網址</th>
                         <th>演出者</th>
+                        <th>顯示</th>
                         <th>編輯</th>
                         <th>刪除</th>
                     </thead>
@@ -26,6 +27,7 @@
                             <td>{{$work->company}}</td>
                             <td><a href="{{$work->work_url}}" target="_blank">{{$work->work_url}}</a></td>
                             <td>{{$work->singer_name?$work->singer_name:'--'}}</td>
+                            <td style="width: 50px">{{ $work->show?"✔️":"" }}</td>
 
                             <td><a class='btn btn-default' href="/manage/work/{{$work->id}}/edit">編輯</a></td>
                             <td>

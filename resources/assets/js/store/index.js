@@ -42,7 +42,8 @@ const store = new Vuex.Store({
   mutations: {
     setMembers(state,d){
       state.members=d
-    }
+    },
+
   },
   actions: {
     getMembers({commit},d){
@@ -50,6 +51,40 @@ const store = new Vuex.Store({
         commit("setMembers",res.data)
       })
       
+    },
+    loadAllData({state},d){
+      let sort_date=(a,b)=>{
+          var va = a.date.split(' ')[0].replace(/\./g,'');
+          var vb = b.date.split(' ')[0].replace(/\./g,'');
+
+          if (!isNaN(va)){
+              while (va.length<8){ va+="0"}
+          }
+          if (!isNaN(vb)){
+              while (vb.length<8){ vb+="0"}
+          }
+          // console.log(va,vb)
+
+          if (isNaN(va) || isNaN(vb) ){
+              return isNaN(va)?10000:-10000;
+          }else{
+              return parseInt(vb) -parseInt(va);
+          }
+      };
+
+      axios.get("/api/singer").then((res)=>{
+          state.artists = res.data.filter(artist=>artist.show);
+      });
+      axios.get("/api/work/indep").then((res)=>{
+          state.works = res.data.sort(sort_date).filter(work=>work.show)
+      });
+      axios.get("/api/work").then((res)=>{     
+          state.all_works == res.data.sort(sort_date).filter(work=>work.show)
+      });
+      axios.get("/api/post").then((res)=>{
+          state.posts = res.data;
+      });
+
     }
   }
 });

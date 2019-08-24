@@ -3,7 +3,7 @@
   section.section_intro
     .container
       .row
-        .col-sm-6
+        .col-sm-6.p-2
           h1 Dyverse Studio
             span.small 歧響音樂
           h4(v-html="slogan") 綺想、歧響，延展聽覺世界的無限可能
@@ -13,7 +13,7 @@
   section.section_service
     .container
       .row.row_service
-        .col-sm-3.servicebox(v-for='s in services')
+        .col-md-3.col-sm-6.servicebox(v-for='s in services')
           img(:src='s.img')
           h5 {{s.eng}}
           h3 {{s.title}}

@@ -62,6 +62,7 @@ class WorkController extends Controller
 		$input = Input::all();
 		$work = Work::find($id);
 		$work -> update($input);
+		$work -> show =array_key_exists('show',$input)?true:false;
 		$work -> save();
 		return Redirect::to('/manage/work');
 	}

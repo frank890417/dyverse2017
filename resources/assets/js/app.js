@@ -98,6 +98,7 @@ const vm = new Vue({
     mounted(){
 
       store.dispatch("getMembers")
+      store.dispatch("loadAllData")
         if (this.mvdata){
             this.mvdata=this.mvdata.map((d)=>{
                 console.log(d)

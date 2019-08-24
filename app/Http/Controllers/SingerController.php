@@ -66,6 +66,7 @@ class SingerController extends Controller
         $input = Input::all();
         $singer = Singer::find($id);
         $singer -> update($input);
+		$singer->show=array_key_exists('show',$input)?true:false;
         $singer -> save();
         return Redirect::to('/manage/singer');
     }

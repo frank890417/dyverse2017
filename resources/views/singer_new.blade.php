@@ -31,7 +31,32 @@
                         <!-- <div class="col-sm-6">
                             <img src="" alt="">
                         </div> -->
-                        <div class="col-md-10 col-sm-12 col-xs-12">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="show">顯示創作者</label>
+                                <br>
+                                <input id="show" name="show" type="checkbox" value="1" class='form-control'
+                                    style='width: 80%; display: inline-block' {!! isset($singer)?($singer->show?'checked':''):"checked" !!}>
+                                        
+                            </div>
+                            <label for="image">封面圖片連結</label>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <img class='cover_preview' src='{!! isset($singer)?$singer->cover:"" !!}' width="100%">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input id=cover name=cover class='form-control' style='width: 80%; display: inline-block' value='{!! isset($singer)?$singer->cover:"" !!}'>
+                                        <br>
+                                        <div class="btn btn-default btn-md btn-dropzone-cover" style=' display: inline-block'>上傳圖片
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                             <div class="form-group">
                                 <label for="name">名字</label>
                                 <input class='form-control' type="text" name="name" value="{{ isset($singer)?$singer->name:'' }}">
@@ -44,20 +69,6 @@
                                 <label for="link">粉專連結</label>
                                 <input class='form-control' type="text" name="link" value="{{ isset($singer)?$singer->link:'' }}">
                             </div>
-                            <label for="image">封面圖片連結</label>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                      <img class='cover_preview' src='{!! isset($singer)?$singer->cover:"" !!}' width="100%">
-                                    </div>
-                                    <div class="col-sm-9">
-                                      <input id=cover name=cover class='form-control' style='width: 80%; display: inline-block' value='{!! isset($singer)?$singer->cover:"" !!}'>
-                                      <br>
-                                      <div class="btn btn-default btn-md btn-dropzone-cover" style=' display: inline-block'>上傳圖片
-                                      </div>
-                                      
-                                        
-                                    </div>
-                                </div>
                         </div>
                     
                     </div>

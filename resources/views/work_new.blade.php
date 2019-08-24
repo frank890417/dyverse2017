@@ -20,6 +20,15 @@
             <div class="panel-heading">新增作品</div>
 
             <div class="panel-body">
+            <div class="form-group">
+                <label for="show">顯示作品</label>
+                <br>
+                
+                <input id="show" name="show" type="checkbox" value="1" class='form-control'
+                                    style='width: 80%; display: inline-block' {!! isset($work)?($work->show?'checked':''):"checked" !!}>
+                                        
+                        
+            </div>
         
             <div class="form-group">
                 <label for="image">作品圖片</label>

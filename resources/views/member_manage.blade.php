@@ -27,13 +27,15 @@
                                 <!-- <td><a href="{{$member->link}}" target="_blank">{{$member->link}}</a></td> -->
                                
                                 <td>{!! nl2br($member->description) !!}</td>
+                                <!-- <td> {{ $member }} </td> -->
+
                                 <td><a class='btn btn-default' href="/manage/member/{{$member->id}}/edit">編輯</a></td>
                                 <td>
-                                  <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$member->id}}").submit();}'>刪除</button>
-                                  <form id='delete_post_{{$member->id}}' action="{{url('/manage/member/'.$member->id)}}" method="post">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                  </form>
+                                <button class='btn btn-danger btn-md' onclick='event.preventDefault();if(confirm("你確定要刪除作品嗎？")){document.getElementById("delete_post_{{$member->id}}").submit();}'>刪除</button>
+                                <form id='delete_post_{{$member->id}}' action="{{url('/manage/member/'.$member->id)}}" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                </form>
                                  
                               </td>
                             </tr>
@@ -46,5 +48,6 @@
         </div>
     </div>
    
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
 @endsection

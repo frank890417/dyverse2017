@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Singer extends Model
 {
     //
-    protected $fillable=["name","cover","link","description"];
+    protected $fillable=["name","cover","link","description","show"];
 }
