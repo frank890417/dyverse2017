@@ -26,7 +26,7 @@
         .col-sm-10
           .row
             .col-sm-6.col-member(v-for="member in members")
-              .photo(:style="{'background-image': `url(${member.cover})`}")
+              .photo(:style="{'background-image': `url(${ member.cover })`}")
               h4 {{ member.job }}
               h2 {{ member.name }}
               p(v-html="convertPara(member.description)")
@@ -104,9 +104,9 @@ export default {
     methods: {
       convertPara(content){
         return content.replace(/\n/g,'<br>\n').replace(/\:/g,'：')
-                          .replace(/\,/g,'，')
-                          .replace(/\./g,'。')
-                          .replace(/\n(.*?：)/g,"\n<b>$1</b>")
+                      .replace(/\,/g,'，')
+                      .replace(/\./g,'。')
+                      .replace(/\n(.*?：)/g,"\n<b>$1</b>")
       }
     }
 }
