@@ -35,4 +35,5 @@ Route::group(['prefix'=>"manage"],function(){
     Route::resource('post','PostController');
     Route::resource('work','WorkController');
     Route::resource('singer','SingerController');
+    Route::resource('member','MemberController');
 });

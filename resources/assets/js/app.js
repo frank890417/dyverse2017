@@ -96,6 +96,8 @@ const vm = new Vue({
       App,picture_loader
     },
     mounted(){
+
+      store.dispatch("getMembers")
         if (this.mvdata){
             this.mvdata=this.mvdata.map((d)=>{
                 console.log(d)

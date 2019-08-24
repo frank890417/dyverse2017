@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Singer;
 use App\Work;
+use App\Member;
 use App\Post;
 
 class ApiController extends Controller
@@ -62,6 +63,10 @@ class ApiController extends Controller
     public function get_all_posts(){
         $posts=Post::all();
         return $posts;
+    }
+    public function get_all_members(){
+        $members=Member::all();
+        return $members;
     }
 
     public function get_youtube_info($id){

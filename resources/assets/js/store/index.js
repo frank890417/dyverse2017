@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
@@ -35,7 +36,21 @@ const store = new Vuex.Store({
       works: [],
       all_works: [],
       artists: [],
+      members: [],
       posts: [],
+  },
+  mutations: {
+    setMembers(state,d){
+      state.members=d
+    }
+  },
+  actions: {
+    getMembers({commit},d){
+      axios.get("/api/members").then(res=>{
+        commit("setMembers",res.data)
+      })
+      
+    }
   }
 });
 

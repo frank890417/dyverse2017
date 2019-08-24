@@ -78,7 +78,12 @@
               <svg class="glyph stroked calendar">
                 <use xlink:href="#stroked-calendar"></use>
               </svg> 文章管理</a></li>
-        {{--          
+
+        <li class="{{ isset($pagename)?(($pagename=='member')?'active':''):'' }}"><a href="{{ url('/manage/member') }}">
+              <svg class="glyph stroked calendar">
+                <use xlink:href="#stroked-calendar"></use>
+              </svg> 成員管理</a></li>
+                {{--          
           a(href='#')
             span(data-toggle='collapse', href='#sub-item-1')
               svg.glyph.stroked.chevron-down
