@@ -29,7 +29,7 @@
               .photo(:style="{'background-image': `url(${member.cover})`}")
               h4 {{ member.job }}
               h2 {{ member.name }}
-              p(v-html="member.description")
+              p(v-html="convertPara(member.description)")
   section.section_decor
 </template>
 
@@ -97,18 +97,17 @@ export default {
     }
   },
   mounted(){
-    this.members.forEach(member=>{
-      member.description = 
-        member.description.replace(/\n/g,'<br>\n').replace(/\:/g,'：')
-                          .replace(/\,/g,'，')
-                          .replace(/\./g,'。')
-                          .replace(/\n(.*?：)/g,"\n<b>$1</b>")
-                          // .replace("擅長音樂風格：",'<b>擅長音樂風格：</b>')
-                          // .replace("興趣：",'<b>興趣：</b>')
-    })
   },
     computed:  {
         ...mapState(['services','members'])
+    },
+    methods: {
+      convertPara(content){
+        return content.replace(/\n/g,'<br>\n').replace(/\:/g,'：')
+                          .replace(/\,/g,'，')
+                          .replace(/\./g,'。')
+                          .replace(/\n(.*?：)/g,"\n<b>$1</b>")
+      }
     }
 }
 </script>
