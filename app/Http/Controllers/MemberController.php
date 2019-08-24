@@ -30,7 +30,7 @@ class MemberController extends Controller
     {
         $members=Member::all();
 
-        return view('Member_manage')
+        return view('member_manage')
               ->with('pagename','Member')
                 ->with('members',$members);
     }
