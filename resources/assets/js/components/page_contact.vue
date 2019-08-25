@@ -31,7 +31,7 @@
             <label>信箱 Mail:</label>
             <input id='reg_email' class='form-control'>
           </div><div class='form-group'>
-            <label>委託訊息 Message:</label>
+            <label>訊息 Message:</label>
             <textarea id='reg_content' class='form-control'></textarea>
           </div><div class='form-group'>
             <button class='btn btn_default submitbtn'>送出表單</button>

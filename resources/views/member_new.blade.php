@@ -63,7 +63,7 @@
                                 @if (isset($member))
                                     <button class="btn btn-primary" type="submit" >儲存修改</button>
                                 @else
-                                <button class="btn btn-primary" type="submit" >新增作品</button>
+                                <button class="btn btn-primary" type="submit" >新增成員</button>
                                 @endif
                                     
 

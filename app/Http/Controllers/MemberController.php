@@ -44,7 +44,7 @@ class MemberController extends Controller
         $input = Input::all();
         $member = Member::create($input);
         $member->save();
-        return Redirect::to('Member');
+        return Redirect::to('/manage/member');
     }
 
     function edit($id){

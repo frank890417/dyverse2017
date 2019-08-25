@@ -42,7 +42,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <a href="{{ url('/manage/singer/create') }}" class="btn btn-primary">新增成員</a>
+                    <a href="{{ url('/manage/member/create') }}" class="btn btn-primary">新增成員</a>
                 </div>
             </div>
         </div>
