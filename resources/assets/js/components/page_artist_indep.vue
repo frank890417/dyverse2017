@@ -11,7 +11,7 @@ section.page_artist_indep(v-if='artist')
         h2
           | {{artist.name}}
           a(:href='artist.link', target='_blank')
-            img(src='img/fbicon_black.png', style='width:20px')
+            img(src='/img/fbicon_black.png', style='width:20px')
         hr
         p(v-html='artist.description')
         br
