@@ -209,7 +209,7 @@ export default {
         if (this.work){
           if ( this.work.work_url.indexOf("soundcloud")!=-1){
             $.ajax({
-              url: 'http://api.soundcloud.com/resolve.json',
+              url: 'https://api.soundcloud.com/resolve.json',
               data: {
                   client_id: vobj.client_id,
                   url: vobj.work.work_url
