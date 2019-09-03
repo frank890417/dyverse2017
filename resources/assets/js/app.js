@@ -135,14 +135,14 @@ function init_musics() {
     tracks.forEach(function(value, index) {
         console.log("init_musics: " + value.song);
         if (value.song.indexOf("set") > -1) {
-            $.get('http://api.soundcloud.com/resolve.json?url=' +
+            $.get('https://api.soundcloud.com/resolve.json?url=' +
                 value.song + '/tracks&client_id=' + client_id,
                 function(result) {
                     track_datas.tracks[index].soundcloud_data = result.tracks;
                 });
 
         } else if (value.song.indexOf("soundcloud") > -1) {
-            $.get('http://api.soundcloud.com/resolve.json?url=' +
+            $.get('https://api.soundcloud.com/resolve.json?url=' +
                 value.song + '/tracks&client_id=' + client_id,
                 function(result) {
                     track_datas.tracks[index].soundcloud_data = [{
