@@ -10,8 +10,14 @@ section.page_artist_indep(v-if='artist')
         img.artist_img(:src='artist.cover', width='100%')
         h2
           | {{artist.name}}
-          a(:href='artist.link', target='_blank')
+          a.social-icon(style="margin-left: 10px",:href='artist.link', target='_blank', v-if="artist.link")
             img(src='/img/fbicon_black.png', style='width:20px')
+          a.social-icon(style="margin-left: 5px",:href='artist.link_netease', target='_blank', v-if="artist.link_netease")
+            img(src='/img/neteaseicon_black.svg', style='width:20px')
+          a.social-icon(style="margin-left: 5px",:href='artist.link_ig', target='_blank', v-if="artist.link_ig")
+            img(src='/img/igicon_black.png', style='width:20px')
+          a.social-icon(style="margin-left: 5px",:href='artist.link_youtube', target='_blank', v-if="artist.link_youtube")
+            img(src='/img/yticon_black.png', style='width:20px')
         hr
         p(v-html='artist.description')
         br

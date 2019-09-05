@@ -66,8 +66,20 @@
                                 <textarea class='form-control' id='content' type="text" name="description" rows=15 >{{ isset($singer)?$singer->description:'' }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="link">粉專連結</label>
+                                <label for="link">FB粉專連結</label>
                                 <input class='form-control' type="text" name="link" value="{{ isset($singer)?$singer->link:'' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="link">網易雲連結</label>
+                                <input class='form-control' type="text" name="link_netease" value="{{ isset($singer)?$singer->link_netease:'' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="link">IG連結</label>
+                                <input class='form-control' type="text" name="link_ig" value="{{ isset($singer)?$singer->link_ig:'' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="link">Youtube連結</label>
+                                <input class='form-control' type="text" name="link_youtube" value="{{ isset($singer)?$singer->link_youtube:'' }}">
                             </div>
                         </div>
                     
