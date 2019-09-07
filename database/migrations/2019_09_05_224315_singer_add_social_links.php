@@ -15,9 +15,9 @@ class SingerAddSocialLinks extends Migration
     {
         //
         Schema::table('singers',function($table){
-            $table->string('link_netease',1000)->default("");
-            $table->string('link_ig',1000)->default("");
-            $table->string('link_youtube',1000)->default("");
+            $table->string('link_netease',1000)->default("")->nullable();
+            $table->string('link_ig',1000)->default("")->nullable();
+            $table->string('link_youtube',1000)->default("")->nullable();
 
         });
         
@@ -33,9 +33,9 @@ class SingerAddSocialLinks extends Migration
     {
         //
         Schema::table('singers',function($table){
-            $table->dropColumn('link_netease',1000);
-            $table->dropColumn('link_ig',1000);
-            $table->dropColumn('link_youtube',1000);
+            $table->dropColumn('link_netease');
+            $table->dropColumn('link_ig');
+            $table->dropColumn('link_youtube');
 
         });
     }
