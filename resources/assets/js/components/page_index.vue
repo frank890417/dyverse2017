@@ -24,6 +24,27 @@
 import {mapState} from 'vuex'
 import workitem from './workitem/workitem'
 import postbox from './blog/postbox'
+import _ from 'underscore'
+
+let sort_date=(a,b)=>{
+    var va = (a.date || a.established_time || "").split(' ')[0].replace(/\./g,'');
+    var vb = (b.date || b.established_time || "").split(' ')[0].replace(/\./g,'');
+
+    if (!isNaN(va)){
+        while (va.length<8){ va+="0"}
+    }
+    if (!isNaN(vb)){
+        while (vb.length<8){ vb+="0"}
+    }
+    // console.log(va,vb)
+
+    if (isNaN(va) || isNaN(vb) ){
+        return isNaN(va)?10000:-10000;
+    }else{
+        return parseInt(vb) -parseInt(va);
+    }
+};
+
 export default {
   components: {
     workitem , postbox
@@ -31,31 +52,14 @@ export default {
   computed: {
       ...mapState(['all_works','works','posts','artists']),
       awitem (){
-        var temp=this.artists[0].works[0];
-        temp.company= this.artists[0].name;
-        return temp;
+        var temp= _.flatten(this.artists.map(artist=>artist.works));
+        console.log(temp)
+        temp = temp.sort(sort_date)
+        // temp.company= this.artists[0].name;
+        return temp[0];
       },
       show_item(){
-        var sort_date=(a,b)=>{
-          console.group("sort date")
-          console.log(a,b)
-          var va = a.date.split(' ')[0].replace('.','');
-          var vb = b.date.split(' ')[0].replace('.','');
-          console.groupEnd("sort date")
-
-          if (!isNaN(va)){
-            while (va.length<7){ va+="0"}
-          }
-          if (!isNaN(vb)){
-            while (vb.length<7){ vb+="0"}
-          }
-
-          if (isNaN(va) || isNaN(vb) ){
-            return isNaN(va)?10000:-10000;
-          }else{
-            return parseInt(vb) -parseInt(va);
-          }
-        };
+        
         var item1=this.all_works.filter(o=>o.singerid!=0).sort(sort_date);
         return item1;
       }

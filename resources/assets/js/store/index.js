@@ -54,8 +54,8 @@ const store = new Vuex.Store({
     },
     loadAllData({state},d){
       let sort_date=(a,b)=>{
-          var va = a.date.split(' ')[0].replace(/\./g,'');
-          var vb = b.date.split(' ')[0].replace(/\./g,'');
+          var va = (a.date || a.established_time || '').split(' ')[0].replace(/\./g,'');
+          var vb = (b.date || b.established_time || '').split(' ')[0].replace(/\./g,'');
 
           if (!isNaN(va)){
               while (va.length<8){ va+="0"}
@@ -79,10 +79,10 @@ const store = new Vuex.Store({
           state.works = res.data.sort(sort_date).filter(work=>work.show)
       });
       axios.get("/api/work").then((res)=>{     
-          state.all_works == res.data.sort(sort_date).filter(work=>work.show)
+          state.all_works = res.data.sort(sort_date).filter(work=>work.show)
       });
       axios.get("/api/post").then((res)=>{
-          state.posts = res.data;
+          state.posts = res.data.sort(sort_date);
       });
 
     }
