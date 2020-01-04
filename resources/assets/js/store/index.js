@@ -54,8 +54,8 @@ const store = new Vuex.Store({
     },
     loadAllData({state},d){
       let sort_date=(a,b)=>{
-          var va = (a.date || a.established_time || '').split(' ')[0].replace(/\./g,'');
-          var vb = (b.date || b.established_time || '').split(' ')[0].replace(/\./g,'');
+          var va = (a.date || a.established_time || '').split(' ')[0].replace(/[\.\-]/g,'');
+          var vb = (b.date || b.established_time || '').split(' ')[0].replace(/[\.\-]/g,'');
 
           if (!isNaN(va)){
               while (va.length<8){ va+="0"}
