@@ -9,9 +9,10 @@
                 <img src='/img/youtubeicon.png' style='width:30px'/></a>
             </h3> 
             </div>
+
             <div class='col-sm-8'>
                 <div class='contact_info_group'> 
-                <div class='goldtext'>PHONE-</div>
+                <div class='goldtext'> PHONE-</div>
                 <div class='infotext'>+886 937-968-966</div>
                 </div>
                 <div class='contact_info_group'> 
@@ -20,7 +21,7 @@
                 </div>
                 <div class='contact_info_group'> 
                 <div class='goldtext'> ADDRESS-</div>
-                <div class='infotext'>235新北市中和區景新街298巷7弄8號5樓</div>
+                <div class='infotext'>104 台北市中山區建國北路3段92號3樓</div>
                 </div>
                 <div class='contact_info_group'> 
                 <div class='goldtext'> MAIL-</div>
@@ -28,7 +29,7 @@
                 </div>
                 <div class='contact_info_group'> 
                 <div class='goldtext'> TAXID-</div>
-                <div class='infotext'>4799 7907</div>
+                <div class='infotext'>8504 6978</div>
                 </div>
             </div>
             </div>
