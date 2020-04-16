@@ -6,14 +6,14 @@
           <h1>聯繫資訊</h1>
         </div>
         <div class='col-sm-6'>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.2475052506525!2d121.50896211500542!3d24.991704483992148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468034ff7e7cd05%3A0x14309715580a576a!2zMjM15Y-w54Gj5paw5YyX5biC5Lit5ZKM5Y2A5pmv5paw6KGXMjk45be3N-iZnw!5e0!3m2!1szh-TW!2sus!4v1534769488252"  width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4490.176974171558!2d121.53146781279777!3d25.06662486925585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a957a188f539%3A0x4d7c41b892243fba!2zMTA0OTHlj7DngaPlj7DljJfluILkuK3lsbHljYDlu7rlnIvljJfot6_kuInmrrU5MuiZnzM!5e0!3m2!1szh-TW!2sus!4v1587049415250!5m2!1szh-TW!2sus"  width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
         </div>
         <div class='col-sm-6'>
           <h4>Dyverse Studio</h4><br>
           <h4>地址: 104 台北市中山區建國北路3段92號3樓</h4>
           <h4>MAIL: dyverse.studio@gmail.com</h4>
           <h4>電話: (02) 2943-9020 </h4>
-          <h4>聯繫時間: 10:00-18:00 </h4>
+          <h4>聯繫時間: 13:00 - 22:00 </h4>
         </div>
 
       </div>
