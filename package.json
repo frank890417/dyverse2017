@@ -31,7 +31,7 @@
     "dropzone": "^5.2.0",
     "gulp": "^3.9.1",
     "monoame-softscroll": "^1.0.114",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "slick-carousel": "^1.8.1",
     "underscore": "^1.9.1",
     "vue-analytics": "^5.1.1",
